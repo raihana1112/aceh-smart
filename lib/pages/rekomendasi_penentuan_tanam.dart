@@ -1,0 +1,157 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
+
+import 'package:app_tanaman_ui/components/navigation_button.dart';
+import 'package:app_tanaman_ui/components/text_fields.dart';
+import 'package:app_tanaman_ui/pages/hasil_rekomendasi_penentuan_tanam.dart';
+import 'package:app_tanaman_ui/pages/home_page_petani.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../components/text_fields_without_icon.dart';
+
+class rekomendasi_penentuan_tanam extends StatefulWidget {
+  const rekomendasi_penentuan_tanam({super.key});
+
+  @override
+  State<rekomendasi_penentuan_tanam> createState() =>
+      _rekomendasi_penentuan_tanamState();
+}
+
+class _rekomendasi_penentuan_tanamState
+    extends State<rekomendasi_penentuan_tanam> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //backbutton
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 15, bottom: 25.0, left: 15, right: 15),
+                child: SafeArea(
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      home_page()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  width: 3,
+                                  color: Color.fromARGB(255, 175, 243, 135),
+                                ),
+                                color: Color.fromARGB(255, 223, 255, 224)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(9.0),
+                              child: Icon(
+                                Icons.arrow_back_ios_new_outlined,
+                                color: Color.fromARGB(255, 175, 243, 135),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Rekomendasi Penentuan Tanam",
+                      style: GoogleFonts.inter(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      "Silahkan Masukkan Data Dibawah Ini",
+                      style: GoogleFonts.inter(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 45),
+                child: Column(
+                  children: [
+                    text_fields_without_icon(
+                      hintText: "Nama Lahan",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 28,
+                    ),
+                    text_fields_without_icon(
+                      hintText: "Luas Lahan",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 28,
+                    ),
+                    text_fields_without_icon(
+                      hintText: "Komoditas",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 28,
+                    ),
+                    text_fields_without_icon(
+                      hintText: "Kota/Kabupaten",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 28,
+                    ),
+                    text_fields_without_icon(
+                      hintText: "Kecamatan",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 28,
+                    ),
+                    text_fields_without_icon(
+                      hintText: "Desa",
+                      color: Color.fromARGB(255, 235, 235, 235),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    navigation_button(
+                      nextPage: hasil_rekomendasi_penentuan_tanam(),
+                      title: "Minta Rekomendasi",
+                      warnaText: Colors.black87,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
