@@ -75,7 +75,7 @@ class _lupa_passwordState extends State<lupa_password> {
                   children: [
                     Flexible(
                       child: Text(
-                        "Silahkan ubah password dengan email yang sudah terdaftar",
+                        "Silahkan ubah password dengan username dan no telpon yang sudah terdaftar",
                         style: GoogleFonts.inter(
                             fontSize: 18,
                             color: Colors.black,
@@ -119,7 +119,48 @@ class _lupa_passwordState extends State<lupa_password> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Email",
+                                  hintText: "Username",
+                                  hintStyle: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: 25,
+                    ),
+
+                    //No Telp
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              "images/telepon.png",
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                style: GoogleFonts.inter(
+                                  fontSize: 15,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "No Telpon",
                                   hintStyle: GoogleFonts.poppins(
                                       fontSize: 15,
                                       color: Colors.black38,

@@ -111,7 +111,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                         "images/username.png",
                         color: Colors.black,
                       ),
-                      hintText: "Email",
+                      hintText: "Username",
                       color: Colors.white,
                     ),
                     SizedBox(
