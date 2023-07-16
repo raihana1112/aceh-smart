@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
+import 'package:app_tanaman_ui/components/status_tanaman.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -113,7 +114,8 @@ class _hasil_rekomendasi_kapantanamState
                                     "Informasi Lahan",
                                     style: GoogleFonts.inter(
                                         fontSize: 15,
-                                        color: Color.fromARGB(255, 175, 243, 135),
+                                        color:
+                                            Color.fromARGB(255, 175, 243, 135),
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
@@ -173,7 +175,8 @@ class _hasil_rekomendasi_kapantanamState
                                     "Lokasi",
                                     style: GoogleFonts.inter(
                                         fontSize: 12,
-                                        color: Color.fromARGB(255, 175, 243, 135),
+                                        color:
+                                            Color.fromARGB(255, 175, 243, 135),
                                         fontWeight: FontWeight.w700),
                                   ),
                                 ],
@@ -230,202 +233,42 @@ class _hasil_rekomendasi_kapantanamState
                     ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
 
                   //jenis tanaman
                   Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Cabe",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "07 Juni 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          statusTanaman(
+                              perkiraanPanen: "Maret",
+                              hasilPanen: "7000 kg/7 ton",
+                              HargaPanen: "Rp. 10.300/kg",
+                              TotalPendapatan: "Rp. 720.100.000",
+                              Title: "Padi")
                         ],
                       ),
-                      SizedBox(
-                        height: 12,
-                      ),
+                      SizedBox(height: 20,),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Bawang",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "07 Agustus 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          statusTanaman(
+                              perkiraanPanen: "Maret",
+                              hasilPanen: "7000 kg/7 ton",
+                              HargaPanen: "Rp. 10.300/kg",
+                              TotalPendapatan: "Rp. 720.100.000",
+                              Title: "Bawang")
                         ],
                       ),
-                      SizedBox(
-                        height: 12,
-                      ),
+                      SizedBox(height: 20,),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Tomat",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "08 April 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          statusTanaman(
+                              perkiraanPanen: "Maret",
+                              hasilPanen: "7000 kg/7 ton",
+                              HargaPanen: "Rp. 10.300/kg",
+                              TotalPendapatan: "Rp. 720.100.000",
+                              Title: "Padi")
                         ],
                       ),
                     ],

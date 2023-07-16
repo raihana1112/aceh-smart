@@ -1,7 +1,5 @@
 // ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, sized_box_for_whitespace
 
-import 'dart:ffi';
-
 import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/choice_rule.dart';
 import 'package:app_tanaman_ui/pages/home_page_petani.dart';
