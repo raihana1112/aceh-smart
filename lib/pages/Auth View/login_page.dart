@@ -1,15 +1,18 @@
 // ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, sized_box_for_whitespace
 
 //import 'dart:ffi';
+import 'dart:convert';
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/choice_rule.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/lupa_password.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
+import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import 'daftar_akun_penyuluh.dart';
 import 'daftar_akun_petani.dart';
@@ -22,17 +25,41 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+String username = '';
+
 class _LoginPageState extends State<LoginPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
   bool isHide = true;
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
 
-    super.dispose();
+  Future<List> _login() async {
+    try {
+      final response = await http
+          .post(Uri.parse("http://192.168.191.137/login_app/login.php"), body: {
+        "username": user.text,
+        "password": pass.text,
+      });
+      var datauser = json.decode(response.body);
+      if (datauser.length == 0) {
+        setState(() {
+          tampil();
+        });
+      } else {
+        if (datauser[0]['level'] == 'petani' ||
+            datauser[0]['level'] == 'penyuluh') {
+          petani_page();
+        } else if (datauser[0]['level'] == 'pemerintah') {
+          pemerintah();
+        }
+
+        setState(() {
+          username = datauser[0]['username'];
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+    return [];
   }
 
   @override
@@ -126,14 +153,14 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Expanded(
                               child: TextField(
-                                controller: emailController,
+                                controller: user,
                                 textInputAction: TextInputAction.next,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Email",
+                                  hintText: "username",
                                   hintStyle: GoogleFonts.poppins(
                                       fontSize: 15,
                                       color: Colors.black38,
@@ -169,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Expanded(
                               child: TextField(
-                                controller: passwordController,
+                                controller: pass,
                                 textInputAction: TextInputAction.next,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
@@ -250,11 +277,28 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     //button masuk
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: navigation_button(
-                            nextPage: home_page(),
-                            title: "Login",
-                            warnaText: Colors.black87)),
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 169, 240, 135),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        onPressed: () {
+                          _login();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Login",
+                            style: GoogleFonts.inter(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -298,12 +342,25 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
 
-/*   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "LOGIN GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
- */
+
+  void petani_page() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => home_page()));
+  }
+
+  void pemerintah() {
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => home_page_pemerintah()));
+  }
+}

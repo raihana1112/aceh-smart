@@ -1,5 +1,4 @@
 // ignore_for_file: unused_import
-
 import 'package:app_tanaman_ui/pages/Start%20View/Start3.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start1.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
@@ -8,10 +7,8 @@ import 'package:app_tanaman_ui/pages/status_tanaman2.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'pages/Auth View/login_page.dart';
-import 'pages/home_page_petani.dart';
+import 'pages/Petani/home_page_petani.dart';
 
 Future main() async {//
   //xWidgetsFlutterBinding.ensureInitialized();
@@ -49,5 +46,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const Start1());
+        
   }
 }

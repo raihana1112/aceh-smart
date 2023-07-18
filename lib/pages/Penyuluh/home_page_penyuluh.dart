@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'package:app_tanaman_ui/pages/Penyuluh/profile.dart';
 import 'package:app_tanaman_ui/pages/cuaca_page.dart';
-import 'package:app_tanaman_ui/pages/profile.dart';
+import 'package:app_tanaman_ui/pages/data_komuditas.dart';
+import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
+import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,19 +12,20 @@ import 'package:url_launcher/url_launcher.dart';
 const _url =
     'https://play.google.com/store/apps/details?id=com.google.android.apps.maps&pli=1';
 
-/// Put your custom url here.
-
-class home_page_pemerintah extends StatefulWidget {
-  const home_page_pemerintah({super.key});
+class home_page_penyuluh extends StatefulWidget {
+  const home_page_penyuluh({super.key});
+  //final String username;
 
   @override
-  State<home_page_pemerintah> createState() => _home_page_pemerintahState();
+  State<home_page_penyuluh> createState() => _home_page_penyuluhState();
 }
 
-class _home_page_pemerintahState extends State<home_page_pemerintah> {
+class _home_page_penyuluhState extends State<home_page_penyuluh> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    // final user = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -43,7 +47,11 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 "images/bang.png",
                               ),
                               fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(15),
+                          // borderRadius: BorderRadius.circular(15),
+                          // border: Border.all(
+                          //   width: 3,
+                          //   color: Color.fromARGB(255, 175, 243, 135),
+                          // ),
                         ),
                         child: SizedBox(
                           height: 60,
@@ -75,6 +83,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
+                                //$username,
                                 "Maulidil",
                                 style: GoogleFonts.inter(
                                     fontSize: 20,
@@ -84,7 +93,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
 
                               //pekerjaan
                               Text(
-                                "Pemerintah",
+                                "Petani",
                                 style: GoogleFonts.inter(
                                     fontSize: 15,
                                     color: Colors.grey,
@@ -262,6 +271,113 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                     height: 15,
                   ),
 
+                  //container 2x2
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      rekomendasi_penentuan_tanam()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      color: Color.fromARGB(38, 0, 0, 0),
+                                      offset: Offset(3, 5),
+                                      spreadRadius: 1)
+                                ],
+                                border: Border.all(
+                                  width: 3,
+                                  color: Color.fromARGB(255, 100, 238, 52),
+                                ),
+                                color: Color.fromARGB(255, 235, 252, 228)),
+                            child: SizedBox(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width / 2.4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0),
+                                    child: Text(
+                                      "Produk Yang Cocok Ditanam",
+                                      style: GoogleFonts.inter(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    "images/chart.png",
+                                    width: 100,
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      rekomendasi_kapan_tanam()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      color: Color.fromARGB(38, 0, 0, 0),
+                                      offset: Offset(3, 5),
+                                      spreadRadius: 1)
+                                ],
+                                border: Border.all(
+                                  width: 3,
+                                  color: Color.fromARGB(255, 100, 238, 52),
+                                ),
+                                color: Color.fromARGB(255, 235, 252, 228)),
+                            child: SizedBox(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width / 2.4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0),
+                                    child: Text(
+                                      "Kapan Tanam",
+                                      style: GoogleFonts.inter(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    "images/kapantanam.png",
+                                    width: 100,
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
                   SizedBox(
                     height: 15,
                   ),
@@ -275,14 +391,14 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 BoxShadow(
                                     blurRadius: 1,
                                     color: Color.fromARGB(38, 0, 0, 0),
-                                    offset: Offset(0, 2),
+                                    offset: Offset(3, 5),
                                     spreadRadius: 1)
                               ],
                               border: Border.all(
                                 width: 3,
-                                color: Color.fromARGB(255, 100, 238, 525),
+                                color: Color.fromARGB(255, 100, 238, 52),
                               ),
-                              color: Color.fromARGB(255, 223, 255, 224)),
+                              color: Color.fromARGB(255, 235, 252, 228)),
                           child: SizedBox(
                             height: 150,
                             width: MediaQuery.of(context).size.width / 2.4,
@@ -318,14 +434,14 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 BoxShadow(
                                     blurRadius: 1,
                                     color: Color.fromARGB(38, 0, 0, 0),
-                                    offset: Offset(0, 2),
+                                    offset: Offset(3, 5),
                                     spreadRadius: 1)
                               ],
                               border: Border.all(
                                 width: 3,
                                 color: Color.fromARGB(255, 100, 238, 52),
                               ),
-                              color: Color.fromARGB(255, 223, 255, 224)),
+                              color: Color.fromARGB(255, 235, 252, 228)),
                           child: SizedBox(
                             height: 150,
                             width: MediaQuery.of(context).size.width / 2.4,
@@ -336,7 +452,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15.0),
                                   child: Text(
-                                    "Grafik Kebutuhan",
+                                    "Grafik Stok Komoditas",
                                     style: GoogleFonts.inter(
                                         fontSize: 15,
                                         color: Colors.black,
@@ -371,7 +487,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         //container 1
                         GestureDetector(
@@ -393,9 +509,36 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 "images/home.png",
                               )),
                         ),
-
                         SizedBox(
-                          width: 10,
+                          width: 25,
+                        ),
+                        //container 2
+                        GestureDetector(
+                          onTap: (() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => data_komuditas()));
+                          }),
+                          child: Container(
+                              width: 65,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 1,
+                                        color: Colors.black26,
+                                        spreadRadius: 1,
+                                        offset: Offset(0, 3))
+                                  ],
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color.fromARGB(255, 223, 255, 224)),
+                              child: Image.asset(
+                                "images/add.png",
+                              )),
+                        ),
+                        SizedBox(
+                          width: 25,
                         ),
                         //container 3
                         GestureDetector(
@@ -403,7 +546,8 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => profile_page()));
+                                    builder: (context) =>
+                                        profile_page_penyluh()));
                           }),
                           child: Container(
                               width: 65,

@@ -4,22 +4,22 @@ import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/tentang_perusahaan.dart';
+import 'package:app_tanaman_ui/pages/Penyuluh/ubah_profile_penyuluh.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
-import 'package:app_tanaman_ui/pages/ubah_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'cuaca_page.dart';
+import '../cuaca_page.dart';
 
-class profile_page extends StatefulWidget {
-  const profile_page({super.key});
+class profile_page_penyluh extends StatefulWidget {
+  const profile_page_penyluh({super.key});
 
   @override
-  State<profile_page> createState() => _profile_pageState();
+  State<profile_page_penyluh> createState() => _profile_page_penyluhState();
 }
 
-class _profile_pageState extends State<profile_page> {
+class _profile_page_penyluhState extends State<profile_page_penyluh> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +101,8 @@ class _profile_pageState extends State<profile_page> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ubah_profile()));
+                                  builder: (context) =>
+                                      ubah_profile_penyuluh()));
                         },
                         child: Container(
                           decoration: BoxDecoration(

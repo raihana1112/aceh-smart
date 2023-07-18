@@ -4,7 +4,7 @@
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/choice_rule.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

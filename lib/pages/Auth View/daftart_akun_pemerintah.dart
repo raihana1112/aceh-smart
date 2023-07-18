@@ -1,12 +1,16 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'dart:convert';
+
 import 'package:app_tanaman_ui/components/text_fields.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
-import 'package:app_tanaman_ui/pages/home_page_pemerintah.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import '../../components/navigation_button.dart';
 import 'login_page.dart';
@@ -21,6 +25,47 @@ class daftar_akun_pemerintah extends StatefulWidget {
 class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
   bool isView = true;
   bool isView2 = true;
+
+  TextEditingController nama_lengkap = TextEditingController();
+  TextEditingController instansi = TextEditingController();
+  TextEditingController nip = TextEditingController();
+  TextEditingController telp = TextEditingController();
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  TextEditingController confirm_pass = TextEditingController();
+
+  String level = 'pemerintah';
+
+  Future register() async {
+    final response = await http.post(
+        Uri.parse("http://192.168.191.137/login_app/register.php"),
+        body: {
+          "nama_lengkap": nama_lengkap.text,
+          "instansi": instansi.text,
+          "nip": nip.text,
+          "telp": telp.text,
+          "username": user.text,
+          "password": pass.text,
+          "level": level,
+        });
+    var data = json.decode(response.body);
+    if (data == "Error") {
+      setState(() {
+        tampil();
+      });
+      // FlutterToast(context).showToast(
+      //     child: Text(
+      //   'User allready exit!',
+      //   style: TextStyle(fontSize: 25, color: Colors.red),
+      // ));
+    } else {
+      // FlutterToast(context).showToast(
+      //     child: Text('Registration Successful',
+      //         style: TextStyle(fontSize: 25, color: Colors.green)));
+      LoginPage();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +109,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                   children: [
                     //textfield
                     text_fields(
+                      controller: nama_lengkap,
                       icons: Image.asset("images/nama lengkap.png",
                           color: Colors.black),
                       hintText: "Nama Lengkap",
@@ -73,6 +119,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: instansi,
                       icons:
                           Image.asset("images/alamat.png", color: Colors.black),
                       hintText: "Instansi",
@@ -82,6 +129,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: nip,
                       icons: Image.asset("images/nip.png", color: Colors.black),
                       hintText: "NIP",
                       color: Colors.white,
@@ -90,6 +138,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: telp,
                       icons: Image.asset("images/telepon.png",
                           color: Colors.black),
                       hintText: "No Telepon",
@@ -99,6 +148,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: user,
                       icons: Image.asset("images/username.png",
                           color: Colors.black),
                       hintText: "Username",
@@ -125,6 +175,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: pass,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -187,6 +238,7 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: confirm_pass,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -310,12 +362,32 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                        child: navigation_button(
-                            nextPage: home_page_pemerintah(),
-                            title: "Daftar",
-                            warnaText: Colors.white)),
-                    //text
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 169, 240, 135),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        onPressed: () {
+                          if (pass.text == confirm_pass) {
+                            register();
+                          } else {
+                            tampil();
+                          }
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Daftar",
+                            style: GoogleFonts.inter(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -356,5 +428,16 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
         ),
       ),
     );
+  }
+
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "REGISTER GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

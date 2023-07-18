@@ -8,11 +8,10 @@ class text_fields extends StatelessWidget {
   final Color color;
   final icons;
   const text_fields(
-      {super.key, required this.hintText, required this.color, required this.icons});
+      {super.key, required this.hintText, required this.color, required this.icons, required TextEditingController controller});
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 237, 237, 237),

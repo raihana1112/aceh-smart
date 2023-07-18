@@ -5,7 +5,7 @@ import 'package:app_tanaman_ui/components/text_fields.dart';
 import 'package:app_tanaman_ui/pages/Auth View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/Penyuluh/home_page_penyuluh.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,8 +18,16 @@ class daftar_akun_penyuluhan extends StatefulWidget {
 }
 
 class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
+  TextEditingController nama_lengkap = TextEditingController();
+  TextEditingController instansi = TextEditingController();
+  TextEditingController id_penyuluh = TextEditingController();
+  TextEditingController telp = TextEditingController();
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
   bool isView = true;
   bool isView2 = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +71,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                   children: [
                     //textfield
                     text_fields(
+                      controller: nama_lengkap,
                       icons: Image.asset(
                         "images/nama lengkap.png",
                         color: Colors.black,
@@ -74,6 +83,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: instansi,
                       icons: Image.asset(
                         "images/alamat.png",
                         color: Colors.black,
@@ -85,6 +95,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: id_penyuluh,
                       icons: Image.asset(
                         "images/nip.png",
                         color: Colors.black,
@@ -96,6 +107,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: telp,
                       icons: Image.asset(
                         "images/telepon.png",
                         color: Colors.black,
@@ -107,6 +119,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                       height: 15,
                     ),
                     text_fields(
+                      controller: user,
                       icons: Image.asset(
                         "images/username.png",
                         color: Colors.black,
@@ -135,6 +148,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: pass,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -323,7 +337,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35.0),
                         child: navigation_button(
-                            nextPage: home_page(),
+                            nextPage: LoginPage(),
                             title: "Daftar",
                             warnaText: Colors.white)),
                     //text
@@ -341,7 +355,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                                 fontWeight: FontWeight.w500),
                           ),
                           TextSpan(
-                              text: ' Masuk disini',
+                              text: 'Masuk disini',
                               style: GoogleFonts.inter(
                                   fontSize: 12,
                                   color: Color.fromARGB(255, 228, 49, 36),

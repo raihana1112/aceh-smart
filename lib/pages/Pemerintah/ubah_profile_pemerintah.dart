@@ -1,23 +1,31 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
-import 'package:app_tanaman_ui/pages/profile.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../components/text_fields.dart';
+import '../../components/text_fields.dart';
 
-class ubah_profile extends StatefulWidget {
-  const ubah_profile({super.key});
+class ubah_profile_pemerintah extends StatefulWidget {
+  const ubah_profile_pemerintah({super.key});
 
   @override
-  State<ubah_profile> createState() => _ubah_profileState();
+  State<ubah_profile_pemerintah> createState() =>
+      _ubah_profile_pemerintahState();
 }
 
-class _ubah_profileState extends State<ubah_profile> {
+class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
   bool isView = true;
   bool isView2 = true;
+
+  TextEditingController nama_lengkap = TextEditingController();
+  TextEditingController alamat = TextEditingController();
+  TextEditingController telp = TextEditingController();
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,6 +172,7 @@ class _ubah_profileState extends State<ubah_profile> {
                   children: [
                     //textfield
                     text_fields(
+                      controller: nama_lengkap,
                       icons: Image.asset(
                         "images/nama lengkap.png",
                         color: Colors.black,
@@ -175,6 +184,7 @@ class _ubah_profileState extends State<ubah_profile> {
                       height: 25,
                     ),
                     text_fields(
+                      controller: alamat,
                       icons: Image.asset(
                         "images/alamat.png",
                         color: Colors.black,
@@ -186,6 +196,7 @@ class _ubah_profileState extends State<ubah_profile> {
                       height: 25,
                     ),
                     text_fields(
+                      controller: telp,
                       icons: Image.asset(
                         "images/telepon.png",
                         color: Colors.black,
@@ -197,6 +208,7 @@ class _ubah_profileState extends State<ubah_profile> {
                       height: 25,
                     ),
                     text_fields(
+                      controller: user,
                       icons: Image.asset(
                         "images/username.png",
                         color: Colors.black,
@@ -225,6 +237,7 @@ class _ubah_profileState extends State<ubah_profile> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: pass,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -340,7 +353,7 @@ class _ubah_profileState extends State<ubah_profile> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       navigation_button(
-                        nextPage: profile_page(),
+                        nextPage: profile_page_pemerintah(),
                         title: "Ubah",
                         warnaText: Colors.black87,
                       ),

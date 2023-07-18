@@ -2,7 +2,7 @@
 
 import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

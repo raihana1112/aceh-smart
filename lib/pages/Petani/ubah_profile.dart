@@ -1,72 +1,172 @@
-// ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables
 
-import 'package:app_tanaman_ui/components/text_fields.dart';
-import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
-import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
+import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
-import 'package:flutter/gestures.dart';
+import 'package:app_tanaman_ui/pages/Petani/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../components/navigation_button.dart';
-import '../Pemerintah/home_page_pemerintah.dart';
-import 'login_page.dart';
+import '../../components/text_fields.dart';
 
-class daftar_akun_petani extends StatefulWidget {
-  const daftar_akun_petani({super.key});
+class ubah_profile extends StatefulWidget {
+  const ubah_profile({super.key});
 
   @override
-  State<daftar_akun_petani> createState() => _daftar_akun_petaniState();
+  State<ubah_profile> createState() => _ubah_profileState();
 }
 
-class _daftar_akun_petaniState extends State<daftar_akun_petani> {
+class _ubah_profileState extends State<ubah_profile> {
+  bool isView = true;
+  bool isView2 = true;
+
   TextEditingController nama_lengkap = TextEditingController();
   TextEditingController alamat = TextEditingController();
   TextEditingController telp = TextEditingController();
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
-  bool isView = true;
-  bool isView2 = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              //image
-              Padding(
-                padding: const EdgeInsets.only(top: 25, bottom: 15),
-                child: Center(
-                  child: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                right: 15.0, left: 15, top: 30, bottom: 25),
+            child: Column(
+              children: [
+                //image
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                              title: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 25.0),
+                                child: Text(
+                                  "Pilih Foto!",
+                                  style: GoogleFonts.inter(
+                                      fontSize: 15,
+                                      color: Colors.black26,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              content: SizedBox(
+                                height: 150,
+                                width: 50,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        Image.asset("images/camera.png"),
+                                        Image.asset("images/galeri.png"),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 25.0),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        spreadRadius: 1,
+                                                        blurRadius: 1,
+                                                        offset: Offset(0, 2),
+                                                        color: Colors.black26)
+                                                  ],
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  border: Border.all(
+                                                    color: Color.fromARGB(
+                                                        255, 175, 243, 135),
+                                                    width: 3,
+                                                  )),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 8.0,
+                                                        horizontal: 25),
+                                                child: Text(
+                                                  "Batal",
+                                                  style: GoogleFonts.inter(
+                                                      fontSize: 15,
+                                                      color: Colors.black26,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )));
+                    },
+                    child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(
-                        "images/buatakunbaru.png",
-                        width: 200,
-                      )),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              "images/bang.png",
+                            ),
+                            fit: BoxFit.cover),
+                      ),
+                      child: SizedBox(
+                        height: 75,
+                        width: 75,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
 
-              Text(
-                "Buat Akun Baru",
-                style: GoogleFonts.inter(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700),
-              ),
+                //nama
+                Text(
+                  "Maulidil",
+                  style: GoogleFonts.inter(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700),
+                ),
+                //pekerjaan
+                Text(
+                  "Petani",
+                  style: GoogleFonts.inter(
+                      fontSize: 15,
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w700),
+                ),
 
-              SizedBox(
-                height: 15,
-              ),
+                SizedBox(
+                  height: 40,
+                ),
 
-              //content
+                //content
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                child: Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //textfield
@@ -80,7 +180,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                       color: Colors.white,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     text_fields(
                       controller: alamat,
@@ -92,7 +192,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                       color: Colors.white,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     text_fields(
                       controller: telp,
@@ -104,7 +204,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                       color: Colors.white,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     text_fields(
                       controller: user,
@@ -116,7 +216,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                       color: Colors.white,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -128,7 +228,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                         child: Row(
                           children: [
                             Image.asset(
-                              "images/open lock.png",
+                              "images/lockU.png",
                               color: Colors.black,
                             ),
                             SizedBox(
@@ -155,7 +255,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                                 ? GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        isView = true;
+                                        isView = false;
                                       });
                                     },
                                     child: Image.asset(
@@ -166,7 +266,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                                 : GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        isView = false;
+                                        isView = true;
                                       });
                                     },
                                     child: Image.asset(
@@ -179,7 +279,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -242,127 +342,28 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              //kebijakan privasi
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Dengan Melanjutkan, Anda Menyetujui\n',
-                              style: GoogleFonts.inter(
-                                  fontSize: 13,
-                                  color: Color.fromARGB(255, 107, 107, 107),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            TextSpan(
-                                text: 'Kebijakan Privasi ',
-                                style: GoogleFonts.inter(
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 13,
-                                    color: Color.fromARGB(255, 0, 207, 3),
-                                    fontWeight: FontWeight.w500),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                kebijakan_privasi()));
-                                  }),
-                            TextSpan(
-                              text: 'dan ',
-                              style: GoogleFonts.inter(
-                                  fontSize: 13,
-                                  color: Color.fromARGB(255, 107, 107, 107),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            TextSpan(
-                                text: 'Ketentuan Layanan ',
-                                style: GoogleFonts.inter(
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 13,
-                                    color: Color.fromARGB(255, 0, 207, 3),
-                                    fontWeight: FontWeight.w500),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                ketentuan_layanan()));
-                                  }),
-                            TextSpan(
-                              text: 'Kami ',
-                              style: GoogleFonts.inter(
-                                  fontSize: 13,
-                                  color: Color.fromARGB(255, 107, 107, 107),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  height: 5,
                 ),
-              ),
-
-              //bagian bawah
-              Container(
-                height: MediaQuery.of(context).size.height / 6,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                        child: navigation_button(
-                            nextPage: LoginPage(),
-                            title: "Daftar",
-                            warnaText: Colors.white)),
-                    //text
-                    SizedBox(
-                      height: 15,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'Anda sudah memiliki akun ?',
-                            style: GoogleFonts.inter(
-                                fontSize: 12,
-                                color: Color.fromARGB(255, 107, 107, 107),
-                                fontWeight: FontWeight.w500),
-                          ),
-                          TextSpan(
-                              text: ' Masuk disini',
-                              style: GoogleFonts.inter(
-                                  fontSize: 12,
-                                  color: Color.fromARGB(255, 228, 49, 36),
-                                  fontWeight: FontWeight.w600),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginPage()));
-                                }),
-                        ],
+                //bagian bawah
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 6,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      navigation_button(
+                        nextPage: profile_page(),
+                        title: "Ubah",
+                        warnaText: Colors.black87,
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
+                      SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

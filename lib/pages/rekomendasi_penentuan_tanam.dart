@@ -2,7 +2,7 @@
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/hasil_rekomendasi_penentuan_tanam.dart';
-import 'package:app_tanaman_ui/pages/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/navigation_button.dart';
-import '../home_page_petani.dart';
+import '../Petani/home_page_petani.dart';
 import 'daftar_akun_penyuluh.dart';
 import 'daftar_akun_petani.dart';
 import 'daftart_akun_pemerintah.dart';
