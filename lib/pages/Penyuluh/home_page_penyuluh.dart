@@ -15,7 +15,7 @@ const _url =
 
 class home_page_penyuluh extends StatefulWidget {
   final String username;
-  const home_page_penyuluh({super.key, required this.username});
+  const home_page_penyuluh({super.key, required this.username, required String telp, required int id_user});
 
   @override
   State<home_page_penyuluh> createState() => _home_page_penyuluhState();

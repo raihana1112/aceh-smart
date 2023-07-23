@@ -4,6 +4,7 @@ import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/tentang_perusahaan.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
 import 'package:app_tanaman_ui/pages/Pemerintah/ubah_profile_pemerintah.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
@@ -13,7 +14,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../cuaca_page.dart';
 
 class profile_page_pemerintah extends StatefulWidget {
-  const profile_page_pemerintah({super.key});
+  final String username;
+  final int id_user;
+  const profile_page_pemerintah(
+      {super.key, required this.username, required this.id_user});
 
   @override
   State<profile_page_pemerintah> createState() =>
@@ -68,7 +72,7 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Maulidil",
+                                  username,
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       color: Colors.black,
@@ -77,7 +81,7 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
 
                                 //pekerjaan
                                 Text(
-                                  "0822 8098 6366",
+                                  telp,
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: Colors.grey,
@@ -85,7 +89,7 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
                                 ),
                                 //pekerjaan
                                 Text(
-                                  "Petani",
+                                  "Pemerintah",
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: Colors.grey,
@@ -102,8 +106,8 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      ubah_profile_pemerintah()));
+                                  builder: (context) => ubah_profile_pemerintah(
+                                      id_user: id_user)));
                         },
                         child: Container(
                           decoration: BoxDecoration(

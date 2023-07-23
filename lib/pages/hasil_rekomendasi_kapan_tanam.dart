@@ -289,7 +289,7 @@ class _hasil_rekomendasi_kapantanamState
 
                   //button
                   navigation_button(
-                      nextPage: home_page(username: username),
+                      nextPage: home_page(username: username, telp: telp, id_user: id_user,),
                       title: "Beranda",
                       warnaText: Colors.white)
                 ],

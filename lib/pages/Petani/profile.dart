@@ -76,7 +76,7 @@ class _profile_pageState extends State<profile_page> {
 
                                 //pekerjaan
                                 Text(
-                                  "0822 8098 6366",
+                                  telp,
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: Colors.grey,

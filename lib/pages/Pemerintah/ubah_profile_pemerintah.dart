@@ -1,15 +1,19 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables
+import 'dart:convert';
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
 import 'package:app_tanaman_ui/pages/Pemerintah/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import '../../components/text_fields.dart';
 
 class ubah_profile_pemerintah extends StatefulWidget {
-  const ubah_profile_pemerintah({super.key});
+  const ubah_profile_pemerintah({super.key, required int id_user});
 
   @override
   State<ubah_profile_pemerintah> createState() =>
@@ -20,14 +24,77 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
   bool isView = true;
   bool isView2 = true;
 
+  String nama = '';
+  String inst = '';
+  String nipp = '';
+  String telpp = '';
+  String username = '';
+
   TextEditingController nama_lengkap = TextEditingController();
-  TextEditingController alamat = TextEditingController();
+  TextEditingController instansi = TextEditingController();
+  TextEditingController nip = TextEditingController();
   TextEditingController telp = TextEditingController();
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
+  Future<List> tampil_data() async {
+    try {
+      final response = await http.get(
+          Uri.parse("http://192.168.100.198/login_app/tampil_profile.php"));
+      var datauser = json.decode(response.body);
+
+      setState(() {
+        id_user = datauser[0]['id'];
+        nama = datauser[0]['nama_lengkap'];
+        inst = datauser[0]['instansi'];
+        nipp = datauser[0]['nip'];
+        telpp = datauser[0]['telp'];
+        username = datauser[0]['username'];
+      });
+    } catch (e) {
+      print(e);
+    }
+    return [];
+  }
+
+  Future ubah() async {
+    try {
+      final response = await http.put(
+          Uri.parse("http://192.168.100.198/login_app/ubah_pofile.php"),
+          body: {
+            "nama_lengkap": nama_lengkap.text,
+            "instansi": instansi.text,
+            "nip": nip.text,
+            "telp": telp.text,
+            "username": user.text,
+            "password": pass.text,
+          });
+      //var datauser = await json.decode(jsonEncode(response.body));
+      if (response.body.isNotEmpty) {
+        json.decode(response.body);
+        setState(() {
+          tampil();
+        });
+      } else {
+        tampil2();
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                profile_page_pemerintah(username: username, id_user: id_user),
+          ),
+        );
+      }
+    } catch (e) {
+      print(e);
+    }
+    return [];
+  }
+
   @override
   Widget build(BuildContext context) {
+    tampil_data();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -146,7 +213,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
 
                 //nama
                 Text(
-                  "Maulidil",
+                  username,
                   style: GoogleFonts.inter(
                       fontSize: 20,
                       color: Colors.black,
@@ -171,53 +238,197 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //textfield
-                    text_fields(
-                      controller: nama_lengkap,
-                      icons: Image.asset(
-                        "images/nama lengkap.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "Nama Lengkap",
-                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              "images/username.png",
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: nama,
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: nama_lengkap,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 15,
                     ),
-                    text_fields(
-                      controller: alamat,
-                      icons: Image.asset(
-                        "images/alamat.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "Alamat",
-                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/alamat.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: inst,
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: instansi,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    //textfield
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/nip.png", color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: nipp,
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: nip,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 15,
                     ),
-                    text_fields(
-                      controller: telp,
-                      icons: Image.asset(
-                        "images/telepon.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "No Telepon",
-                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/telepon.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: telpp,
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: telp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 15,
                     ),
-                    text_fields(
-                      controller: user,
-                      icons: Image.asset(
-                        "images/username.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "Username",
-                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/username.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: username,
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: user,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
+
                     SizedBox(
-                      height: 25,
+                      height: 15,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -229,7 +440,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                         child: Row(
                           children: [
                             Image.asset(
-                              "images/lockU.png",
+                              "images/open lock.png",
                               color: Colors.black,
                             ),
                             SizedBox(
@@ -256,7 +467,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 ? GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        isView = false;
+                                        isView = true;
                                       });
                                     },
                                     child: Image.asset(
@@ -267,7 +478,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 : GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        isView = true;
+                                        isView = false;
                                       });
                                     },
                                     child: Image.asset(
@@ -280,8 +491,9 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                       ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 15,
                     ),
+
                     Container(
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 237, 237, 237),
@@ -344,24 +556,37 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                   ],
                 ),
                 SizedBox(
-                  height: 5,
+                  height: 50,
                 ),
                 //bagian bawah
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      navigation_button(
-                        nextPage: profile_page_pemerintah(),
-                        title: "Ubah",
-                        warnaText: Colors.black87,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 45,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 175, 243, 135),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30))),
+                      onPressed: () {
+                        ubah();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Ubah Profile Anda",
+                          style: GoogleFonts.inter(
+                              fontSize: 18,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                    ],
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
               ],
             ),
@@ -369,5 +594,27 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
         ),
       ),
     );
+  }
+
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "UBAH PROFILE GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  void tampil2() {
+    Fluttertoast.showToast(
+        msg: "Anda berhasil mengubah profile",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

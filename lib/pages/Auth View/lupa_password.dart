@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, sized_box_for_whitespace
+import 'dart:convert';
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
-import 'package:app_tanaman_ui/pages/Auth%20View/choice_rule.dart';
-import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import 'daftar_akun_penyuluh.dart';
 import 'daftar_akun_petani.dart';
@@ -21,6 +23,36 @@ class lupa_password extends StatefulWidget {
 class _lupa_passwordState extends State<lupa_password> {
   bool isHide = true;
   bool isHide2 = true;
+  TextEditingController user = TextEditingController();
+  TextEditingController telp = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future ubah() async {
+    final response = await http.post(
+        Uri.parse("http://192.168.100.198/login_app/ubah_password.php"),
+        body: {
+          "username": user.text,
+          "telp": telp.text,
+          "password": pass.text,
+        });
+    //var data = json.decode(response.body);
+    if (response.body.isNotEmpty) {
+      json.decode(response.body);
+      setState(() {
+        tampil();
+      });
+    } else {
+      tampil2();
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,6 +144,7 @@ class _lupa_passwordState extends State<lupa_password> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: user,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -153,6 +186,7 @@ class _lupa_passwordState extends State<lupa_password> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: telp,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -194,6 +228,7 @@ class _lupa_passwordState extends State<lupa_password> {
                             ),
                             Expanded(
                               child: TextField(
+                                controller: pass,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -327,12 +362,12 @@ class _lupa_passwordState extends State<lupa_password> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30))),
                           onPressed: () {
-                            Navigator.pop(context);
+                            ubah();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Simpan",
+                              "Ubah Password",
                               style: GoogleFonts.inter(
                                   fontSize: 18,
                                   color: Colors.black87,
@@ -357,5 +392,27 @@ class _lupa_passwordState extends State<lupa_password> {
         ),
       ),
     );
+  }
+
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "UBAH PASSWORD GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  void tampil2() {
+    Fluttertoast.showToast(
+        msg: "Anda berhasil mengubah password",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

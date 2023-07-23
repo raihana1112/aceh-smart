@@ -18,7 +18,7 @@ class rekomendasi_kapan_tanam extends StatefulWidget {
 }
 
 class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
-TextEditingController namaLahan = TextEditingController();
+  TextEditingController namaLahan = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +41,8 @@ TextEditingController namaLahan = TextEditingController();
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      home_page(username: username)));
+                                  builder: (context) => home_page(
+                                      username: username, telp: telp, id_user: id_user,)));
                         },
                         child: Container(
                             decoration: BoxDecoration(
@@ -97,49 +97,56 @@ TextEditingController namaLahan = TextEditingController();
                   children: [
                     text_fields_without_icon(
                       hintText: "Nama Lahan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Luas Lahan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Komoditas",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Perkiraan Bulan Tanam",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kota/Kabupaten",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kecamatan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Desa",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 40,

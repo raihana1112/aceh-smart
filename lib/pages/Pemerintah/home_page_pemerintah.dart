@@ -14,7 +14,11 @@ const _url =
 
 class home_page_pemerintah extends StatefulWidget {
   final String username;
-  const home_page_pemerintah({super.key, required this.username});
+  const home_page_pemerintah(
+      {super.key,
+      required this.username,
+      required String telp,
+      required int id_user});
 
   @override
   State<home_page_pemerintah> createState() => _home_page_pemerintahState();
@@ -406,7 +410,10 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        profile_page_pemerintah()));
+                                        profile_page_pemerintah(
+                                          id_user: id_user,
+                                          username: username,
+                                        )));
                           }),
                           child: Container(
                               width: 65,

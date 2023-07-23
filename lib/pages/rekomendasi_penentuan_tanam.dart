@@ -41,9 +41,7 @@ class _rekomendasi_penentuan_tanamState
           });
 
       var hasil = json.decode(response.body);
-
-      print(hasil);
-
+      //print(hasil);
       setState(() {
         hasil.forEach(hasil);
 
@@ -95,8 +93,11 @@ class _rekomendasi_penentuan_tanamState
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      home_page(username: username)));
+                                  builder: (context) => home_page(
+                                        username: username,
+                                        telp: telp,
+                                        id_user: id_user,
+                                      )));
                         },
                         child: Container(
                             decoration: BoxDecoration(

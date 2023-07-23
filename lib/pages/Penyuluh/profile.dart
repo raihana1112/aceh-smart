@@ -76,7 +76,7 @@ class _profile_page_penyluhState extends State<profile_page_penyluh> {
 
                                 //pekerjaan
                                 Text(
-                                  "0822 8098 6366",
+                                  telp,
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: Colors.grey,
@@ -84,7 +84,7 @@ class _profile_page_penyluhState extends State<profile_page_penyluh> {
                                 ),
                                 //pekerjaan
                                 Text(
-                                  "Petani",
+                                  "Penyuluh",
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: Colors.grey,

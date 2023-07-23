@@ -128,7 +128,6 @@ class _daftar_akun_pemerintahState extends State<daftar_akun_pemerintah> {
                             ),
                             Expanded(
                               child: TextField(
-                                //SizedBox(height: 15),
                                 style: GoogleFonts.inter(
                                   fontSize: 14,
                                 ),

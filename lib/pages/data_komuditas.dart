@@ -16,7 +16,6 @@ class data_komuditas extends StatefulWidget {
 }
 
 class _data_komuditasState extends State<data_komuditas> {
-
   TextEditingController namaLahan = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -93,62 +92,74 @@ class _data_komuditasState extends State<data_komuditas> {
                   children: [
                     text_fields_without_icon(
                       hintText: "Nama lahan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Luas lahan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Komoditas",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Jumlah hasil panen (ton)",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Bulan tanam",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kota/Kabupaten",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kecamatan",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Desa",
-                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
+                      color: Color.fromARGB(255, 235, 235, 235),
+                      controller: namaLahan,
                     ),
                     SizedBox(
                       height: 50,
                     ),
                     navigation_button(
-                      nextPage: home_page(username: username),
+                      nextPage: home_page(
+                        username: username,
+                        telp: telp,
+                        id_user: id_user,
+                      ),
                       title: "Simpan Data",
                       warnaText: Colors.black87,
                     )
