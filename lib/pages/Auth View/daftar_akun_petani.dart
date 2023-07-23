@@ -1,12 +1,16 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'dart:convert';
+
 import 'package:app_tanaman_ui/components/text_fields.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/kebijakan_privasi.dart';
 import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart';
 import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import '../../components/navigation_button.dart';
 import '../Pemerintah/home_page_pemerintah.dart';
@@ -20,7 +24,7 @@ class daftar_akun_petani extends StatefulWidget {
 }
 
 class _daftar_akun_petaniState extends State<daftar_akun_petani> {
-  TextEditingController nama_lengkap = TextEditingController();
+  TextEditingController namaLengkap = TextEditingController();
   TextEditingController alamat = TextEditingController();
   TextEditingController telp = TextEditingController();
   TextEditingController user = TextEditingController();
@@ -28,6 +32,40 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
 
   bool isView = true;
   bool isView2 = true;
+  String level = 'petani';
+
+  Future register() async {
+    final response = await http.post(
+        Uri.parse("http://192.168.190.25/login_app/register_petani.php"),
+        body: {
+          "nama_lengkap": namaLengkap.text,
+          "telp": telp.text,
+          "alamat": alamat.text,
+          "username": user.text,
+          "password": pass.text,
+          "level": level,
+        });
+    //var data = json.decode(response.body);
+    if (response.body.isNotEmpty) {
+      json.decode(response.body);
+      setState(() {
+        tampil();
+      });
+    }
+    //if (data == "Error") {
+
+    else {
+      tampil2();
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +109,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                   children: [
                     //textfield
                     text_fields(
-                      controller: nama_lengkap,
+                      controller: namaLengkap,
                       icons: Image.asset(
                         "images/nama lengkap.png",
                         color: Colors.black,
@@ -321,12 +359,33 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                        child: navigation_button(
-                            nextPage: LoginPage(),
-                            title: "Daftar",
-                            warnaText: Colors.white)),
-                    //text
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 169, 240, 135),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        onPressed: () {
+                          // if (pass.text == confirm_pass) {
+                          //   register();
+                          // } else {
+                          //   tampil();
+                          // }
+                          register();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Daftar",
+                            style: GoogleFonts.inter(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -367,5 +426,27 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
         ),
       ),
     );
+  }
+
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "REGISTER GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  void tampil2() {
+    Fluttertoast.showToast(
+        msg: "Anda berhasil mendaftar",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

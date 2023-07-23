@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Penyuluh/profile.dart';
 import 'package:app_tanaman_ui/pages/cuaca_page.dart';
 import 'package:app_tanaman_ui/pages/data_komuditas.dart';
@@ -13,8 +14,8 @@ const _url =
     'https://play.google.com/store/apps/details?id=com.google.android.apps.maps&pli=1';
 
 class home_page_penyuluh extends StatefulWidget {
-  const home_page_penyuluh({super.key});
-  //final String username;
+  final String username;
+  const home_page_penyuluh({super.key, required this.username});
 
   @override
   State<home_page_penyuluh> createState() => _home_page_penyuluhState();
@@ -83,8 +84,7 @@ class _home_page_penyuluhState extends State<home_page_penyuluh> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                //$username,
-                                "Maulidil",
+                                username,
                                 style: GoogleFonts.inter(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -199,7 +199,7 @@ class _home_page_penyuluhState extends State<home_page_penyuluh> {
                             width: 3,
                             color: Color.fromARGB(255, 100, 238, 52),
                           ),
-                          color: Color.fromARGB(255, 223, 255, 224)),
+                          color: Color.fromARGB(255, 235, 252, 228)),
                       child: SizedBox(
                         height: 160,
                         width: MediaQuery.of(context).size.width,

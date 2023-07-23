@@ -1,5 +1,7 @@
 // ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
+import 'package:app_tanaman_ui/components/prediksiKapanTanam.dart';
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -205,16 +207,125 @@ class _hasil_rekomendasi_penentuan_tanamState
                         ),
                       )),
                   SizedBox(
+                    height: 30,
+                  ),
+
+                  //prediksi tanam 1
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "Prediksi Tanam",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    color: Colors.black26,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color.fromARGB(255, 62, 185, 138)),
+                                  child: SizedBox(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12.0, horizontal: 20),
+                                      child: Center(
+                                        child: Text(
+                                          "Januari",
+                                          style: GoogleFonts.inter(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "Prediksi Tanam",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    color: Colors.black26,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color.fromARGB(255, 62, 185, 138)),
+                                  child: SizedBox(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12.0, horizontal: 20),
+                                      child: Center(
+                                        child: Text(
+                                          "Maret",
+                                          style: GoogleFonts.inter(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text:
+                                  "Perkiraan jumlah hasil yang akan dipanen : ",
+                              style: GoogleFonts.inter(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+
+                            //nilai perkiraan hasil panen
+                            TextSpan(
+                              text: "2169.8/kg",
+                              style: GoogleFonts.inter(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                            )
+                          ]),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
                     height: 25,
                   ),
-                  //Text
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Text(
-                            "Status Tanaman",
+                            "Prediksi Kapan Tanam",
                             style: GoogleFonts.inter(
                                 fontSize: 20,
                                 color: Color.fromARGB(255, 179, 179, 179),
@@ -223,7 +334,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                         ],
                       ),
                       Text(
-                        "Tanaman yang bagus untuk ditanam",
+                        "Perhitungan Berdasarkan Bulan Terdekat",
                         style: GoogleFonts.inter(
                             fontSize: 17,
                             color: Color.fromARGB(255, 179, 179, 179),
@@ -231,223 +342,118 @@ class _hasil_rekomendasi_penentuan_tanamState
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
 
-                  //jenis tanaman
+                  SizedBox(
+                    height: 20,
+                  ),
                   Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Cabe",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "07 Juni 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          prediksiKpnTanam(
+                              HargaPanen: "Rp. 47.750/kg",
+                              TotalPendapatan: "Rp. 127.614.375",
+                              Title: "Januari")
                         ],
                       ),
                       SizedBox(
-                        height: 12,
+                        height: 15,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Bawang",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "07 Agustus 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          prediksiKpnTanam(
+                              HargaPanen: "Rp. 47.750/kg",
+                              TotalPendapatan: "Rp. 127.614.375",
+                              Title: "Februari")
                         ],
                       ),
                       SizedBox(
-                        height: 12,
+                        height: 15,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "Tomat",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 70,
-                                width: MediaQuery.of(context).size.width / 1.62,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Perkiraan Panen",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Color.fromARGB(
-                                                  166, 187, 187, 187),
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "08 April 2023",
-                                          style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          prediksiKpnTanam(
+                              HargaPanen: "Rp. 47.750/kg",
+                              TotalPendapatan: "Rp. 127.614.375",
+                              Title: "Maret")
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Prediksi Kapan Tanam",
+                                style: GoogleFonts.inter(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(255, 179, 179, 179),
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "Perhitungan Berdasarkan Waktu Tanam Terbaik",
+                            style: GoogleFonts.inter(
+                                fontSize: 17,
+                                color: Color.fromARGB(255, 179, 179, 179),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              prediksiKpnTanam(
+                                  HargaPanen: "Rp. 43.750/kg",
+                                  TotalPendapatan: "Rp. 127.614.375",
+                                  Title: "Januari")
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              prediksiKpnTanam(
+                                  HargaPanen: "Rp. 37.750/kg",
+                                  TotalPendapatan: "Rp. 127.614.375",
+                                  Title: "Februari")
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              prediksiKpnTanam(
+                                  HargaPanen: "Rp. 41.750/kg",
+                                  TotalPendapatan: "Rp. 120.663.402",
+                                  Title: "April")
+                            ],
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+
+                          //button
+                          navigation_button(
+                              nextPage: home_page(username: username),
+                              title: "Beranda",
+                              warnaText: Colors.white)
                         ],
                       ),
                     ],
                   ),
-
-                  SizedBox(
-                    height: 50,
-                  ),
-
-                  //button
-                  navigation_button(
-                      nextPage: home_page(),
-                      title: "Beranda",
-                      warnaText: Colors.white)
                 ],
               ),
-            ),
-
-            SizedBox(
-              height: 25,
             ),
           ],
         ),

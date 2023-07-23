@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables
 
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -145,7 +146,7 @@ class _data_komuditasState extends State<data_komuditas> {
                       height: 50,
                     ),
                     navigation_button(
-                      nextPage: home_page(),
+                      nextPage: home_page(username: username),
                       title: "Simpan Data",
                       warnaText: Colors.black87,
                     )

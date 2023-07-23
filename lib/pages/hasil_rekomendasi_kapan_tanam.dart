@@ -1,10 +1,14 @@
 // ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
+import 'package:app_tanaman_ui/components/status_tanaman.dart';
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/navigation_button.dart';
+import 'Pemerintah/home_page_pemerintah.dart';
+import 'Penyuluh/home_page_penyuluh.dart';
 import 'Petani/home_page_petani.dart';
 
 class hasil_rekomendasi_kapan_tanam extends StatefulWidget {
@@ -205,103 +209,74 @@ class _hasil_rekomendasi_kapantanamState
                         ),
                       )),
                   SizedBox(
-                    height: 30,
+                    height: 25,
                   ),
-
-                  //prediksi tanam 1
+                  //Text
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Text(
-                            "Prediksi Tanam",
+                            "Status Tanaman",
                             style: GoogleFonts.inter(
-                                fontSize: 18,
-                                color: Colors.black26,
-                                fontWeight: FontWeight.w400),
+                                fontSize: 20,
+                                color: Color.fromARGB(255, 179, 179, 179),
+                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "05/06/2023",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 15,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 25,
+                      Text(
+                        "Tanaman yang bagus untuk ditanam",
+                        style: GoogleFonts.inter(
+                            fontSize: 17,
+                            color: Color.fromARGB(255, 179, 179, 179),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
 
-                  //prediksi tanam 2
+                  //jenis tanaman
                   Column(
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "Prediksi Panen",
-                            style: GoogleFonts.inter(
-                                fontSize: 18,
-                                color: Colors.black26,
-                                fontWeight: FontWeight.w400),
-                          ),
+                          statusTanaman(
+                              perkiraanPanen: "Maret",
+                              hasilPanen: "7000 kg/7 ton",
+                              HargaPanen: "Rp. 10.300/kg",
+                              TotalPendapatan: "Rp. 720.100.000",
+                              Title: "Padi")
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
-                              child: SizedBox(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width / 3.5,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 15),
-                                  child: Center(
-                                    child: Text(
-                                      "05/09/2023",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 15,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )),
+                          statusTanaman(
+                              perkiraanPanen: "Maret",
+                              hasilPanen: "7000 kg/7 ton",
+                              HargaPanen: "Rp. 10.300/kg",
+                              TotalPendapatan: "Rp. 720.100.000",
+                              Title: "Bawang")
                         ],
                       ),
                       SizedBox(
-                        height: 12,
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          statusTanaman(
+                              perkiraanPanen: "Juni",
+                              hasilPanen: "9000 kg/9 ton",
+                              HargaPanen: "Rp. 35.650/kg",
+                              TotalPendapatan: "Rp. 320.850.000",
+                              Title: "Cabe")
+                        ],
                       ),
                     ],
                   ),
@@ -312,7 +287,7 @@ class _hasil_rekomendasi_kapantanamState
 
                   //button
                   navigation_button(
-                      nextPage: home_page(),
+                      nextPage: home_page(username: username),
                       title: "Beranda",
                       warnaText: Colors.white)
                 ],

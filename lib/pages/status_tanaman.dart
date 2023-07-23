@@ -134,8 +134,6 @@ class _home_status_tanamanState extends State<home_status_tanaman> {
                           title: "Waktu Menanam",
                           titleChild: "02 April 2022",
                           icon: Icon(Icons.calendar_month)),
-                
-                
                       SizedBox(
                         height: 15,
                       ),

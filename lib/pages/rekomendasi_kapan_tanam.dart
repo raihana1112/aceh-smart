@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:app_tanaman_ui/components/navigation_button.dart';
-import 'package:app_tanaman_ui/pages/hasil_rekomendasi_kapan_tanam.dart';
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
+import 'package:app_tanaman_ui/pages/hasil_rekomendasi_penentuan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,7 +39,8 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => home_page()));
+                                  builder: (context) =>
+                                      home_page(username: username)));
                         },
                         child: Container(
                             decoration: BoxDecoration(
@@ -141,7 +143,7 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
                       height: 40,
                     ),
                     navigation_button(
-                      nextPage: hasil_rekomendasi_kapan_tanam(),
+                      nextPage: hasil_rekomendasi_penentuan_tanam(),
                       title: "Minta Rekomendasi",
                       warnaText: Colors.white,
                     )

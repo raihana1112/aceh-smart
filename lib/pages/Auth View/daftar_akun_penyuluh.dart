@@ -1,5 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'dart:convert';
+
 import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/components/text_fields.dart';
 import 'package:app_tanaman_ui/pages/Auth View/login_page.dart';
@@ -8,7 +10,9 @@ import 'package:app_tanaman_ui/pages/Informasi%20Lainnya/ketentuan_layanan.dart'
 import 'package:app_tanaman_ui/pages/Penyuluh/home_page_penyuluh.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 class daftar_akun_penyuluhan extends StatefulWidget {
   const daftar_akun_penyuluhan({super.key});
@@ -18,15 +22,50 @@ class daftar_akun_penyuluhan extends StatefulWidget {
 }
 
 class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
-  TextEditingController nama_lengkap = TextEditingController();
+  TextEditingController namaLengkap = TextEditingController();
   TextEditingController instansi = TextEditingController();
-  TextEditingController id_penyuluh = TextEditingController();
+  TextEditingController idPenyuluh = TextEditingController();
   TextEditingController telp = TextEditingController();
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
+  String level = 'penyuluh';
+
   bool isView = true;
   bool isView2 = true;
+
+  Future register() async {
+    final response = await http.post(
+        Uri.parse("http://192.168.190.25/login_app/register_penyuluh.php"),
+        body: {
+          "nama_lengkap": namaLengkap.text,
+          "instansi": instansi.text,
+          "id_penyuluh": idPenyuluh.text,
+          "telp": telp.text,
+          "username": user.text,
+          "password": pass.text,
+          "level": level,
+        });
+    //var data = json.decode(response.body);
+    if (response.body.isNotEmpty) {
+      json.decode(response.body);
+      setState(() {
+        tampil();
+      });
+    }
+    //if (data == "Error") {
+
+    else {
+      tampil2();
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,63 +108,181 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //textfield
-                    text_fields(
-                      controller: nama_lengkap,
-                      icons: Image.asset(
-                        "images/nama lengkap.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "Nama Lengkap",
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    text_fields(
-                      controller: instansi,
-                      icons: Image.asset(
-                        "images/alamat.png",
-                        color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              "images/username.png",
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Nama Lengkap",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: namaLengkap,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      hintText: "Instansi",
-                      color: Colors.white,
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    text_fields(
-                      controller: id_penyuluh,
-                      icons: Image.asset(
-                        "images/nip.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "ID Penyuluh",
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    text_fields(
-                      controller: telp,
-                      icons: Image.asset(
-                        "images/telepon.png",
-                        color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/alamat.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Instansi",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: instansi,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      hintText: "No Telepon",
-                      color: Colors.white,
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    text_fields(
-                      controller: user,
-                      icons: Image.asset(
-                        "images/username.png",
-                        color: Colors.black,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: "Username",
-                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/nip.png", color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "ID Penyuluh",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: idPenyuluh,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/telepon.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Telepon",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: telp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Image.asset("images/username.png",
+                                color: Colors.black),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Username",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: user,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 15,
@@ -190,7 +347,6 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       height: 15,
                     ),
@@ -335,12 +491,33 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                        child: navigation_button(
-                            nextPage: LoginPage(),
-                            title: "Daftar",
-                            warnaText: Colors.white)),
-                    //text
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 169, 240, 135),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        onPressed: () {
+                          // if (pass.text == confirm_pass) {
+                          //   register();
+                          // } else {
+                          //   tampil();
+                          // }
+                          register();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Daftar",
+                            style: GoogleFonts.inter(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -381,5 +558,27 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
         ),
       ),
     );
+  }
+
+  void tampil() {
+    Fluttertoast.showToast(
+        msg: "REGISTER GAGAL",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  void tampil2() {
+    Fluttertoast.showToast(
+        msg: "Anda berhasil mendaftar",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

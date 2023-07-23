@@ -7,42 +7,51 @@ class text_fields extends StatelessWidget {
   final String hintText;
   final Color color;
   final icons;
-  const text_fields(
-      {super.key, required this.hintText, required this.color, required this.icons, required TextEditingController controller});
+  final TextEditingController controller;
+  final TextInputType inputType;
+  const text_fields({
+    super.key,
+    required this.hintText,
+    required this.color,
+    required this.icons,
+    required this.controller,
+    this.inputType = TextInputType.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 237, 237, 237),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Row(
-                        children: [
-                          icons,
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: TextField(
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                              ),
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: hintText,
-                                hintStyle: GoogleFonts.inter(
-                                    fontSize: 14,
-                                    color: Colors.black38,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 237, 237, 237),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Row(
+          children: [
+            icons,
+            SizedBox(
+              width: 15,
+            ),
+            Expanded(
+              child: TextField(
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: hintText,
+                  hintStyle: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w400),
+                ),
+                controller: controller,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

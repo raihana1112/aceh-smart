@@ -26,7 +26,7 @@ class _choice_ruleState extends State<choice_rule> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 70),
               child: Center(
                 child: Container(
                     decoration:
@@ -38,7 +38,7 @@ class _choice_ruleState extends State<choice_rule> {
               ),
             ),
             SizedBox(
-              height: 35,
+              height: 15,
             ),
 
             //text
@@ -52,7 +52,7 @@ class _choice_ruleState extends State<choice_rule> {
             ),
 
             SizedBox(
-              height: 150,
+              height: 100,
             ),
 
             //pilihan

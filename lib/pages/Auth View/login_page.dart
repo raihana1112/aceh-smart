@@ -7,6 +7,7 @@ import 'package:app_tanaman_ui/components/navigation_button.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/choice_rule.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/lupa_password.dart';
 import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
+import 'package:app_tanaman_ui/pages/Penyuluh/home_page_penyuluh.dart';
 import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<List> _login() async {
     try {
       final response = await http
-          .post(Uri.parse("http://192.168.191.137/login_app/login.php"), body: {
+          .post(Uri.parse("http://10.140.234.8/login_app/login.php"), body: {
         "username": user.text,
         "password": pass.text,
       });
@@ -45,16 +46,17 @@ class _LoginPageState extends State<LoginPage> {
           tampil();
         });
       } else {
-        if (datauser[0]['level'] == 'petani' ||
-            datauser[0]['level'] == 'penyuluh') {
-          petani_page();
-        } else if (datauser[0]['level'] == 'pemerintah') {
-          pemerintah();
-        }
-
         setState(() {
           username = datauser[0]['username'];
         });
+
+        if (datauser[0]['level'] == 'petani') {
+          petani();
+        } else if (datauser[0]['level'] == 'penyuluh') {
+          penyuluh();
+        } else if (datauser[0]['level'] == 'pemerintah') {
+          pemerintah();
+        }
       }
     } catch (e) {
       print(e);
@@ -354,13 +356,22 @@ class _LoginPageState extends State<LoginPage> {
         fontSize: 16.0);
   }
 
-  void petani_page() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => home_page()));
+  void petani() {
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => home_page(username: username)));
   }
 
   void pemerintah() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => home_page_pemerintah()));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => home_page_pemerintah(username: username)));
+  }
+
+  void penyuluh() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => home_page_penyuluh(username: username)));
   }
 }

@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Auth View/login_page.dart';
 
-
 class Start2 extends StatefulWidget {
   const Start2({super.key});
 
@@ -22,18 +21,21 @@ class _Start2State extends State<Start2> {
         children: [
           //image
           Padding(
-            padding: const EdgeInsets.only(left: 50.0, bottom: 100),
+            padding: const EdgeInsets.only(left: 50.0, bottom: 100, top: 20.0),
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                child: Image.asset("images/start2.png", width: 250,)
-                ),
-              ),
+                  child: Image.asset(
+                "images/start2.png",
+                width: 250,
+              )),
             ),
+          ),
 
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(top: 100.0, left: 25, right: 25),
+              padding: const EdgeInsets.only(
+                  top: 70.0, left: 25, right: 25, bottom: 20),
               child: Row(
                 children: [
                   Flexible(
@@ -68,7 +70,8 @@ class _Start2State extends State<Start2> {
               alignment: Alignment.bottomRight,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => Start3())));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => Start3())));
                 },
                 child: Text(
                   "Selanjutnya",
@@ -87,7 +90,8 @@ class _Start2State extends State<Start2> {
               alignment: Alignment.bottomLeft,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => LoginPage())));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: ((context) => LoginPage())));
                 },
                 child: Text(
                   "Lewati",
@@ -116,11 +120,9 @@ class _Start2State extends State<Start2> {
                       width: 10,
                     ),
                   ),
-
                   SizedBox(
                     width: 10,
                   ),
-
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
@@ -130,11 +132,9 @@ class _Start2State extends State<Start2> {
                       width: 10,
                     ),
                   ),
-
                   SizedBox(
                     width: 10,
                   ),
-
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
+import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/Pemerintah/profile.dart';
 import 'package:app_tanaman_ui/pages/cuaca_page.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,8 @@ const _url =
 /// Put your custom url here.
 
 class home_page_pemerintah extends StatefulWidget {
-  const home_page_pemerintah({super.key});
+  final String username;
+  const home_page_pemerintah({super.key, required this.username});
 
   @override
   State<home_page_pemerintah> createState() => _home_page_pemerintahState();
@@ -75,7 +77,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Maulidil",
+                                username,
                                 style: GoogleFonts.inter(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -115,7 +117,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                             width: 3,
                             color: Color.fromARGB(255, 100, 238, 52),
                           ),
-                          color: Color.fromARGB(255, 223, 255, 224)),
+                          color: Color.fromARGB(255, 235, 252, 228)),
                       child: SizedBox(
                         height: 160,
                         width: MediaQuery.of(context).size.width,
@@ -190,7 +192,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                             width: 3,
                             color: Color.fromARGB(255, 100, 238, 52),
                           ),
-                          color: Color.fromARGB(255, 223, 255, 224)),
+                          color: Color.fromARGB(255, 235, 252, 228)),
                       child: SizedBox(
                         height: 160,
                         width: MediaQuery.of(context).size.width,
@@ -282,7 +284,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 width: 3,
                                 color: Color.fromARGB(255, 100, 238, 525),
                               ),
-                              color: Color.fromARGB(255, 223, 255, 224)),
+                              color: Color.fromARGB(255, 235, 252, 228)),
                           child: SizedBox(
                             height: 150,
                             width: MediaQuery.of(context).size.width / 2.4,
@@ -325,7 +327,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 width: 3,
                                 color: Color.fromARGB(255, 100, 238, 52),
                               ),
-                              color: Color.fromARGB(255, 223, 255, 224)),
+                              color: Color.fromARGB(255, 235, 252, 228)),
                           child: SizedBox(
                             height: 150,
                             width: MediaQuery.of(context).size.width / 2.4,
@@ -388,7 +390,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                         offset: Offset(0, 3))
                                   ],
                                   borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
+                                  color: Color.fromARGB(255, 235, 252, 228)),
                               child: Image.asset(
                                 "images/home.png",
                               )),
@@ -418,7 +420,7 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                         offset: Offset(0, 3))
                                   ],
                                   borderRadius: BorderRadius.circular(15),
-                                  color: Color.fromARGB(255, 223, 255, 224)),
+                                  color: Color.fromARGB(255, 235, 252, 228)),
                               child: Image.asset(
                                 "images/username.png",
                               )),
