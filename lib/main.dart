@@ -3,6 +3,7 @@
 import 'package:app_tanaman_ui/pages/Start%20View/Start3.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start1.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
+import 'package:app_tanaman_ui/pages/cuaca_page.dart';
 import 'package:app_tanaman_ui/pages/status_tanaman.dart';
 import 'package:app_tanaman_ui/pages/status_tanaman2.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
@@ -43,11 +44,21 @@ class MyApp extends StatelessWidget {
   // }
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< Updated upstream
         debugShowCheckedModeBanner: false,
         title: 'Petani Aceh Smart',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         home: const Start1());
+=======
+      debugShowCheckedModeBanner: false,
+      title: 'Tumbuhan',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home:  Start1()
+    );
+>>>>>>> Stashed changes
   }
 }

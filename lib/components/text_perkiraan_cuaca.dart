@@ -7,7 +7,13 @@ class text_perkiraan_cuaca extends StatelessWidget {
   final String hari;
   final int kelembapan;
   final int suhu1, suhu2;
-  const text_perkiraan_cuaca({super.key, required this.hari, required this.kelembapan, required this.suhu1, required this.suhu2});
+  final String Source;
+  const text_perkiraan_cuaca(
+      {super.key,
+      required this.hari,
+      required this.kelembapan,
+      required this.suhu1,
+      required this.suhu2, required this.Source});
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +38,17 @@ class text_perkiraan_cuaca extends StatelessWidget {
                   color: Colors.black,
                   fontWeight: FontWeight.w500),
             ),
+            SizedBox(width: 15,),
+            Text(
+              "$suhu1\u00B0",
+              style: GoogleFonts.inter(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500),
+            ),
           ],
         ),
-        Text(
-          "$suhu1\u00B0 $suhu2\u00B0",
-          style: GoogleFonts.inter(
-              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-        ),
+        Image.network("$Source"),
       ],
     );
   }
