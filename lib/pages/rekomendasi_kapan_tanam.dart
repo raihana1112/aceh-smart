@@ -18,6 +18,8 @@ class rekomendasi_kapan_tanam extends StatefulWidget {
 }
 
 class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
+TextEditingController namaLahan = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,49 +97,49 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
                   children: [
                     text_fields_without_icon(
                       hintText: "Nama Lahan",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Luas Lahan",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Komoditas",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Perkiraan Bulan Tanam",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kota/Kabupaten",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Kecamatan",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 28,
                     ),
                     text_fields_without_icon(
                       hintText: "Desa",
-                      color: Color.fromARGB(255, 235, 235, 235),
+                      color: Color.fromARGB(255, 235, 235, 235), controller: namaLahan,
                     ),
                     SizedBox(
                       height: 40,

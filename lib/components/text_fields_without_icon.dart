@@ -6,10 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 class text_fields_without_icon extends StatelessWidget {
   final String hintText;
   final Color color;
-  const text_fields_without_icon(
-      {super.key,
-      required this.hintText,
-      required this.color,});
+  final TextEditingController controller;
+  final TextInputType inputType;
+  const text_fields_without_icon({
+    super.key,
+    required this.hintText,
+    required this.color,
+    required this.controller,
+    this.inputType = TextInputType.text,
+  });
 
   @override
   Widget build(BuildContext context) {
