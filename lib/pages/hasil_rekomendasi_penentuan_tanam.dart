@@ -1,10 +1,13 @@
 // ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
+import 'dart:convert';
+
 import 'package:app_tanaman_ui/components/prediksiKapanTanam.dart';
 import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 
 import '../components/navigation_button.dart';
 import 'Petani/home_page_petani.dart';
@@ -445,7 +448,11 @@ class _hasil_rekomendasi_penentuan_tanamState
 
                           //button
                           navigation_button(
-                              nextPage: home_page(username: username, telp: telp,id_user: id_user,),
+                              nextPage: home_page(
+                                username: username,
+                                telp: telp,
+                                id_user: id_user,
+                              ),
                               title: "Beranda",
                               warnaText: Colors.white)
                         ],

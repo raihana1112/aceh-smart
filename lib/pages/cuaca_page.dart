@@ -104,11 +104,11 @@ class _cuaca_pageState extends State<cuaca_page> {
                         ),
                       ),
                     )),
-          
+
                 SizedBox(
                   height: 40,
                 ),
-          
+
                 Row(
                   children: [
                     Flexible(
@@ -181,54 +181,62 @@ class _cuaca_pageState extends State<cuaca_page> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20,),
-                            text_perkiraan_cuaca(
-                              hari: "Selasa", 
-                              kelembapan: 4, 
-                              suhu1: 31, 
-                              suhu2: 27
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 20,),
                             text_perkiraan_cuaca(
-                              hari: "Rabu", 
-                              kelembapan: 6, 
-                              suhu1: 34, 
-                              suhu2: 26
+                                hari: "Selasa",
+                                kelembapan: 4,
+                                suhu1: 31,
+                                suhu2: 27),
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 20,),
                             text_perkiraan_cuaca(
-                              hari: "kamis", 
-                              kelembapan: 2, 
-                              suhu1: 34, 
-                              suhu2: 26
+                                hari: "Rabu",
+                                kelembapan: 6,
+                                suhu1: 34,
+                                suhu2: 26),
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 20,),
                             text_perkiraan_cuaca(
-                              hari: "Jumat", 
-                              kelembapan: 9, 
-                              suhu1: 31, 
-                              suhu2: 25
-                            ),SizedBox(height: 20,),
-                            text_perkiraan_cuaca(
-                              hari: "Sabtu", 
-                              kelembapan: 7, 
-                              suhu1: 33, 
-                              suhu2: 26
+                                hari: "kamis",
+                                kelembapan: 2,
+                                suhu1: 34,
+                                suhu2: 26),
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 20,),
                             text_perkiraan_cuaca(
-                              hari: "Minggu", 
-                              kelembapan: 4, 
-                              suhu1: 34, 
-                              suhu2: 27
+                                hari: "Jumat",
+                                kelembapan: 9,
+                                suhu1: 31,
+                                suhu2: 25),
+                            SizedBox(
+                              height: 20,
                             ),
-                            SizedBox(height: 20,),
                             text_perkiraan_cuaca(
-                              hari: "Senin", 
-                              kelembapan: 4, 
-                              suhu1: 33, 
-                              suhu2: 25
+                                hari: "Sabtu",
+                                kelembapan: 7,
+                                suhu1: 33,
+                                suhu2: 26),
+                            SizedBox(
+                              height: 20,
                             ),
+                            text_perkiraan_cuaca(
+                                hari: "Minggu",
+                                kelembapan: 4,
+                                suhu1: 34,
+                                suhu2: 27),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            text_perkiraan_cuaca(
+                                hari: "Senin",
+                                kelembapan: 4,
+                                suhu1: 33,
+                                suhu2: 25),
                           ],
                         ),
                       ),

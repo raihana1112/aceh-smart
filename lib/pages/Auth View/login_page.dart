@@ -40,11 +40,13 @@ class _LoginPageState extends State<LoginPage> {
   Future<List> _login() async {
     try {
       final response = await http
-          .post(Uri.parse("http://192.168.100.198/login_app/login.php"), body: {
+          .post(Uri.parse("http://192.168.190.177/login_app/login.php"), body: {
         "username": user.text,
         "password": pass.text,
       });
+
       var datauser = json.decode(response.body);
+
       if (datauser.length == 0) {
         setState(() {
           tampil();

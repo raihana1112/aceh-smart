@@ -49,7 +49,7 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                      "images/bang.png",
+                                      "images/profile.png",
                                     ),
                                     fit: BoxFit.cover),
                                 // borderRadius: BorderRadius.circular(15),

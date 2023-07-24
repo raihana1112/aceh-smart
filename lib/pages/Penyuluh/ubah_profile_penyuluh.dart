@@ -131,7 +131,7 @@ class _ubah_profile_penyuluhState extends State<ubah_profile_penyuluh> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
-                              "images/bang.png",
+                              "images/profile.png",
                             ),
                             fit: BoxFit.cover),
                       ),

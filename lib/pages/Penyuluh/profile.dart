@@ -44,7 +44,7 @@ class _profile_page_penyluhState extends State<profile_page_penyluh> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                      "images/bang.png",
+                                      "images/profile.png",
                                     ),
                                     fit: BoxFit.cover),
                                 // borderRadius: BorderRadius.circular(15),

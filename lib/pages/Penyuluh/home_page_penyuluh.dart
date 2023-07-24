@@ -15,7 +15,11 @@ const _url =
 
 class home_page_penyuluh extends StatefulWidget {
   final String username;
-  const home_page_penyuluh({super.key, required this.username, required String telp, required int id_user});
+  const home_page_penyuluh(
+      {super.key,
+      required this.username,
+      required String telp,
+      required int id_user});
 
   @override
   State<home_page_penyuluh> createState() => _home_page_penyuluhState();
@@ -45,7 +49,7 @@ class _home_page_penyuluhState extends State<home_page_penyuluh> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                "images/bang.png",
+                                "images/profile.png",
                               ),
                               fit: BoxFit.cover),
                           // borderRadius: BorderRadius.circular(15),
@@ -384,46 +388,55 @@ class _home_page_penyuluhState extends State<home_page_penyuluh> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 1,
-                                    color: Color.fromARGB(38, 0, 0, 0),
-                                    offset: Offset(3, 5),
-                                    spreadRadius: 1)
-                              ],
-                              border: Border.all(
-                                width: 3,
-                                color: Color.fromARGB(255, 100, 238, 52),
-                              ),
-                              color: Color.fromARGB(255, 235, 252, 228)),
-                          child: SizedBox(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width / 2.4,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15.0),
-                                  child: Text(
-                                    "Grafik Kebutuhan",
-                                    style: GoogleFonts.inter(
-                                        fontSize: 15,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                    textAlign: TextAlign.start,
-                                  ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      rekomendasi_penentuan_tanam()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      color: Color.fromARGB(38, 0, 0, 0),
+                                      offset: Offset(3, 5),
+                                      spreadRadius: 1)
+                                ],
+                                border: Border.all(
+                                  width: 3,
+                                  color: Color.fromARGB(255, 100, 238, 52),
                                 ),
-                                Image.asset(
-                                  "images/diagramalur.png",
-                                  width: 100,
-                                )
-                              ],
-                            ),
-                          )),
+                                color: Color.fromARGB(255, 235, 252, 228)),
+                            child: SizedBox(
+                              height: 150,
+                              width: MediaQuery.of(context).size.width / 2.4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0),
+                                    child: Text(
+                                      "Grafik Kebutuhan",
+                                      style: GoogleFonts.inter(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    "images/diagramalur.png",
+                                    width: 100,
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
                       SizedBox(
                         width: 20,
                       ),

@@ -42,9 +42,9 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
       final response = await http.get(
           Uri.parse("http://192.168.100.198/login_app/tampil_profile.php"));
       var datauser = json.decode(response.body);
-
       setState(() {
-        id_user = datauser[0]['id'];
+        id_user = int.parse(datauser[0]['id']);
+        // id_user = datauser[0]['id'];
         nama = datauser[0]['nama_lengkap'];
         inst = datauser[0]['instansi'];
         nipp = datauser[0]['nip'];
@@ -60,7 +60,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
   Future ubah() async {
     try {
       final response = await http.put(
-          Uri.parse("http://192.168.100.198/login_app/ubah_pofile.php"),
+          Uri.parse("http://192.168.190.177/login_app/ubah_pofile.php"),
           body: {
             "nama_lengkap": nama_lengkap.text,
             "instansi": instansi.text,
@@ -199,7 +199,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
-                              "images/bang.png",
+                              "images/profile.png",
                             ),
                             fit: BoxFit.cover),
                       ),
@@ -570,7 +570,11 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30))),
                       onPressed: () {
-                        ubah();
+                        print('username : ${username}');
+                        print('id : ${id_user}');
+                        print('nama : ${nama}');
+                        // print('data : ${datauser}');
+                        // ubah();
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
