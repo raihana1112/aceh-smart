@@ -27,8 +27,8 @@ class _grafik_kebutuhanState extends State<grafik_kebutuhan> {
   List<Kebutuhan> hasil = [];
   Future<List<Kebutuhan>> getdata() async {
     List<Kebutuhan> list = [];
-    final response = await http
-        .get(Uri.parse("http://192.168.190.177/login_app/kebutuhan_cabai.php"));
+    final response = await http.get(
+        Uri.parse("http://192.168.190.177/login_app/grafik_kebutuhan.php"));
     if (response.statusCode == 200) {
       list = fromJson(response.body);
     }

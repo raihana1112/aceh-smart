@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 03:40 PM
+-- Generation Time: Jul 24, 2023 at 05:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -31,7 +31,7 @@ CREATE TABLE `kebutuhan` (
   `id` int(20) NOT NULL,
   `komoditas` varchar(20) NOT NULL,
   `bulan` varchar(20) NOT NULL,
-  `kebutuhan` float NOT NULL,
+  `kebutuhan` int(11) NOT NULL,
   `kabupaten` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,51 +40,51 @@ CREATE TABLE `kebutuhan` (
 --
 
 INSERT INTO `kebutuhan` (`id`, `komoditas`, `bulan`, `kebutuhan`, `kabupaten`) VALUES
-(1, 'cabai', '8', 172, 'banda aceh'),
-(2, 'cabai', '8', 128, 'aceh besar'),
-(3, 'cabai', '8', 211, 'lhokseumawe'),
-(4, 'cabai', '9', 151, 'banda aceh'),
-(5, 'cabai', '9', 255, 'aceh besar'),
-(6, 'cabai', '9', 176, 'lhokseumawe'),
-(7, 'cabai', '10', 298, 'banda aceh'),
-(8, 'cabai', '10', 144, 'aceh besar'),
-(9, 'cabai', '10', 223, 'lhokseumawe'),
-(10, 'cabai', '11', 299, 'banda aceh'),
-(11, 'cabai', '11', 231, 'aceh besar'),
-(12, 'cabai', '11', 205, 'lhokseumawe'),
-(13, 'cabai', '12', 181, 'banda aceh'),
-(14, 'cabai', '12', 299, 'aceh besar'),
-(15, 'cabai', '12', 283, 'lhokseumawe'),
-(16, 'bawang', '8', 183, 'banda aceh'),
-(17, 'bawang', '8', 298, 'aceh besar'),
-(18, 'bawang', '8', 158, 'lhokseumawe'),
-(19, 'bawang', '9', 293, 'banda aceh'),
-(20, 'bawang', '9', 293, 'aceh besar'),
-(21, 'bawang', '9', 136, 'lhokseumawe'),
-(22, 'bawang', '10', 282, 'banda aceh'),
-(23, 'bawang', '10', 231, 'aceh besar'),
-(24, 'bawang', '10', 140, 'lhokseumawe'),
-(25, 'bawang', '11', 292, 'banda aceh'),
-(26, 'bawang', '11', 155, 'aceh besar'),
-(27, 'bawang', '11', 222, 'lhokseumawe'),
-(28, 'bawang', '12', 162, 'banda aceh'),
-(29, 'bawang', '12', 166, 'aceh besar'),
-(30, 'bawang', '12', 142, 'lhokseumawe'),
-(31, 'beras', '8', 147, 'banda aceh'),
-(32, 'beras', '8', 205, 'aceh besar'),
-(33, 'beras', '8', 177, 'lhokseumawe'),
-(34, 'beras', '9', 273, 'banda aceh'),
-(35, 'beras', '9', 261, 'aceh besar'),
-(36, 'beras', '9', 224, 'lhokseumawe'),
-(37, 'beras', '10', 215, 'banda aceh'),
-(38, 'beras', '10', 225, 'aceh besar'),
-(39, 'beras', '10', 108, 'lhokseumawe'),
-(40, 'beras', '11', 245, 'banda aceh'),
-(41, 'beras', '11', 128, 'aceh besar'),
-(42, 'beras', '11', 188, 'lhokseumawe'),
-(43, 'beras', '12', 287, 'banda aceh'),
-(44, 'beras', '12', 180, 'aceh besar'),
-(45, 'beras', '12', 273, 'lhokseumawe');
+(1, 'cabai', 'Agustus', 172, 'banda aceh'),
+(2, 'cabai', 'Agustus', 128, 'aceh besar'),
+(3, 'cabai', 'Agustus', 211, 'lhokseumawe'),
+(4, 'cabai', 'September', 151, 'banda aceh'),
+(5, 'cabai', 'September', 255, 'aceh besar'),
+(6, 'cabai', 'September', 176, 'lhokseumawe'),
+(7, 'cabai', 'Oktober', 298, 'banda aceh'),
+(8, 'cabai', 'Oktober', 144, 'aceh besar'),
+(9, 'cabai', 'Oktober', 223, 'lhokseumawe'),
+(10, 'cabai', 'November', 299, 'banda aceh'),
+(11, 'cabai', 'November', 231, 'aceh besar'),
+(12, 'cabai', 'November', 205, 'lhokseumawe'),
+(13, 'cabai', 'Desember', 181, 'banda aceh'),
+(14, 'cabai', 'Desember', 299, 'aceh besar'),
+(15, 'cabai', 'Desember', 283, 'lhokseumawe'),
+(16, 'bawang', 'Agustus', 183, 'banda aceh'),
+(17, 'bawang', 'Agustus', 298, 'aceh besar'),
+(18, 'bawang', 'Agustus', 158, 'lhokseumawe'),
+(19, 'bawang', 'September', 293, 'banda aceh'),
+(20, 'bawang', 'September', 293, 'aceh besar'),
+(21, 'bawang', 'September', 136, 'lhokseumawe'),
+(22, 'bawang', 'Oktober', 282, 'banda aceh'),
+(23, 'bawang', 'Oktober', 231, 'aceh besar'),
+(24, 'bawang', 'Oktober', 140, 'lhokseumawe'),
+(25, 'bawang', 'November', 292, 'banda aceh'),
+(26, 'bawang', 'November', 155, 'aceh besar'),
+(27, 'bawang', 'November', 222, 'lhokseumawe'),
+(28, 'bawang', 'Desember', 162, 'banda aceh'),
+(29, 'bawang', 'Desember', 166, 'aceh besar'),
+(30, 'bawang', 'Desember', 142, 'lhokseumawe'),
+(31, 'beras', 'Agustus', 147, 'banda aceh'),
+(32, 'beras', 'Agustus', 205, 'aceh besar'),
+(33, 'beras', 'Agustus', 177, 'lhokseumawe'),
+(34, 'beras', 'September', 273, 'banda aceh'),
+(35, 'beras', 'September', 261, 'aceh besar'),
+(36, 'beras', 'September', 224, 'lhokseumawe'),
+(37, 'beras', 'Oktober', 215, 'banda aceh'),
+(38, 'beras', 'Oktober', 225, 'aceh besar'),
+(39, 'beras', 'Oktober', 108, 'lhokseumawe'),
+(40, 'beras', 'November', 245, 'banda aceh'),
+(41, 'beras', 'November', 128, 'aceh besar'),
+(42, 'beras', 'November', 188, 'lhokseumawe'),
+(43, 'beras', 'Desember', 287, 'banda aceh'),
+(44, 'beras', 'Desember', 180, 'aceh besar'),
+(45, 'beras', 'Desember', 273, 'lhokseumawe');
 
 -- --------------------------------------------------------
 
@@ -189,17 +189,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama_lengkap`, `instansi`, `nip`, `id_penyuluh`, `telp`, `alamat`, `username`, `password`, `level`) VALUES
-(1, 'Maulidil', NULL, NULL, NULL, '08123456789', 'Tungkop', 'petani', '123', 'petani'),
+(1, 'Maulidil', NULL, NULL, NULL, '08123456789', 'Tungkop', 'maulidil', '123', 'petani'),
 (2, 'raihana', 'Dinas Lingkungan Hidup', '198812012002', NULL, '08123456789', NULL, 'raihana', '123', 'pemerintah'),
-(3, '', '', '', NULL, '', NULL, '', '123', 'pemerintah'),
-(20, 'iwan', 'kota banda aceh', '0081233', NULL, '081237589', NULL, 'iwan', '123', 'pemerintah'),
-(21, 'iwan', 'kota banda aceh', '0081233', NULL, '081237589', NULL, 'iwan', '123', 'pemerintah'),
-(22, 'iwan', NULL, NULL, NULL, '', NULL, 'iwan', '', ''),
-(23, 'iwan', NULL, NULL, NULL, '', NULL, 'iwan', '', ''),
-(24, 'iwan', '082347', '082374', NULL, '08126373', NULL, 'iwan', '123', 'pemerintah'),
-(31, 'iwan', 'kota banda aceh', '0812467', NULL, '0812637', NULL, 'iwan', '123', 'pemerintah'),
-(35, 'iwan', 'kota', '0923', NULL, '123', NULL, 'iwan', '123', 'pemerintah'),
-(44, 'p', NULL, NULL, NULL, '12', 'p', 'p', '12', 'petani');
+(20, 'iwan', 'kota banda aceh', '0081233', NULL, '081237589', NULL, 'iwan', '123', 'penyuluh');
 
 --
 -- Indexes for dumped tables
