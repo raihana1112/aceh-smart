@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "869988527952",
+    "project_id": "flutter-login-b48ab",
+    "storage_bucket": "flutter-login-b48ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869988527952:android:38f14b13f9079263a54655",
+        "android_client_info": {
+          "package_name": "com.example.app_tanaman_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869988527952-t9ii5nfa8e4sqis74sao5c37lodqp5fb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRdszhIvy2Pr5qSBiMOi_ESBEL4b10YZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869988527952-t9ii5nfa8e4sqis74sao5c37lodqp5fb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
