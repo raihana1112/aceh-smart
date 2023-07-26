@@ -2,6 +2,8 @@
 import 'package:app_tanaman_ui/pages/Start%20View/Start3.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start1.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
+import 'package:app_tanaman_ui/pages/grafik_kebutuhan.dart';
+import 'package:app_tanaman_ui/pages/grafik_stock.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:app_tanaman_ui/pages/status_tanaman.dart';
@@ -34,5 +36,3 @@ class MyApp extends StatelessWidget {
         home: const Start1());
   }
 }
-
-

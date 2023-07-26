@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: unused_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings
 import 'dart:convert';
 
 import 'package:app_tanaman_ui/components/status_tanaman.dart';
@@ -14,7 +14,8 @@ import 'Penyuluh/home_page_penyuluh.dart';
 import 'Petani/home_page_petani.dart';
 
 class hasil_rekomendasi_kapan_tanam extends StatefulWidget {
-  const hasil_rekomendasi_kapan_tanam({super.key, required hasil});
+  final List hasil;
+  hasil_rekomendasi_kapan_tanam({super.key, required this.hasil});
 
   @override
   State<hasil_rekomendasi_kapan_tanam> createState() =>
@@ -247,39 +248,40 @@ class _hasil_rekomendasi_kapantanamState
                       Row(
                         children: [
                           statusTanaman(
-                              perkiraanPanen: "Maret",
-                              hasilPanen: "7000 kg/7 ton",
-                              HargaPanen: "Rp. 10.300/kg",
-                              TotalPendapatan: "Rp. 720.100.000",
-                              Title: "Padi")
+                              perkiraanPanen: widget.hasil[0][2],
+                              hasilPanen:
+                                  widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
+                              HargaPanen: widget.hasil[0][5],
+                              TotalPendapatan: widget.hasil[0][6],
+                              Title: widget.hasil[0][0])
                         ],
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      // Row(
-                      //   children: [
-                      //     statusTanaman(
-                      //         perkiraanPanen: "Maret",
-                      //         hasilPanen: "7000 kg/7 ton",
-                      //         HargaPanen: "Rp. 10.300/kg",
-                      //         TotalPendapatan: "Rp. 720.100.000",
-                      //         Title: "Bawang")
-                      //   ],
-                      // ),
-                      // SizedBox(
-                      //   height: 20,
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     statusTanaman(
-                      //         perkiraanPanen: "Juni",
-                      //         hasilPanen: "9000 kg/9 ton",
-                      //         HargaPanen: "Rp. 35.650/kg",
-                      //         TotalPendapatan: "Rp. 320.850.000",
-                      //         Title: "Cabe")
-                      //   ],
-                      // ),
+                      Row(
+                        children: [
+                          statusTanaman(
+                              perkiraanPanen: widget.hasil[1][2],
+                              hasilPanen: widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
+                              HargaPanen: widget.hasil[1][5],
+                              TotalPendapatan: widget.hasil[1][6],
+                              Title: widget.hasil[1][0])
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          statusTanaman(
+                              perkiraanPanen: widget.hasil[2][2],
+                              hasilPanen: widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
+                              HargaPanen: widget.hasil[2][5],
+                              TotalPendapatan: widget.hasil[2][6],
+                              Title: widget.hasil[2][0])
+                        ],
+                      ),
                     ],
                   ),
 
@@ -289,7 +291,11 @@ class _hasil_rekomendasi_kapantanamState
 
                   //button
                   navigation_button(
-                      nextPage: home_page(username: username, telp: telp, id_user: id_user,),
+                      nextPage: home_page(
+                        username: username,
+                        telp: telp,
+                        id_user: id_user,
+                      ),
                       title: "Beranda",
                       warnaText: Colors.white)
                 ],

@@ -33,7 +33,7 @@ class _rekomendasi_penentuan_tanamState
   Future<List> _check() async {
     try {
       final response = await http.post(
-          Uri.parse("http://10.140.234.8/login_app/data_jns_tanaman.php"),
+          Uri.parse("http://192.168.137.48/login_app/data_jns_tanaman.php"),
           body: {
             "lokasi": kota.text,
             "bulan": bulanTanam.text,
@@ -43,29 +43,12 @@ class _rekomendasi_penentuan_tanamState
       var hasil = json.decode(response.body);
       //print(hasil);
       setState(() {
-        hasil.forEach(hasil);
-
-        Navigator.pushReplacement(
+        Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) =>
                     hasil_rekomendasi_kapan_tanam(hasil: hasil)));
       });
-
-      //print(datatanaman);
-      // if (hasil.length == 0) {
-      //   setState(() {
-      //     tampil();
-      //   });
-      // } else {
-      //   setState(() {
-      //     kota = hasil[0]['lokasi'];
-      //     bulanTanam = hasil[0]['bulan'];
-      //     // print(kota);
-
-      //     // hasil();
-      //   });
-      // }
     } catch (e) {
       print(e);
     }

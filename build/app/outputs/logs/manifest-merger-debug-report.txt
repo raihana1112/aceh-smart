@@ -18,7 +18,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\As
 	android:icon
 		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml:7:9-43
 	android:usesCleartextTraffic
-		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:8:18-53
+		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:9:18-53
 	android:name
 		INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml:6:9-42
@@ -49,9 +49,9 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Asus\.gradle\caches
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Asus\.gradle\caches\transforms-3\c352b41c714aa5c60de1bbcbd735235b\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Asus\.gradle\caches\transforms-3\7b0ee0c4efef22f973f7ede6341a4c82\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Asus\.gradle\caches\transforms-3\8ad76617c08294b715ad6718695569f4\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-9:12
-INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-9:12
-INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-9:12
+INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-10:12
+INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-10:12
+INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:1:1-10:12
 	package
 		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml:2:5-41
 		INJECTED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml
@@ -124,6 +124,10 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:8:5-78
+	android:name
+		ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\debug\AndroidManifest.xml:8:22-76
 meta-data#io.flutter.network-policy
 ADDED from C:\Users\Asus\Videos\aceh-smart-master\android\app\src\main\AndroidManifest.xml:9:9-10:58
 	android:resource

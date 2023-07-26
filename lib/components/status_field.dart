@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class status_field extends StatelessWidget {
   final String title;
   final String titleChild;
-  final  icon;
+  final icon;
   const status_field({super.key, required this.title, required this.titleChild, required this.icon});
 
   @override

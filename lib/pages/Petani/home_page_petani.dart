@@ -440,46 +440,63 @@ class _home_pageState extends State<home_page> {
                       SizedBox(
                         width: 20,
                       ),
-                      Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 1,
-                                    color: Color.fromARGB(38, 0, 0, 0),
-                                    offset: Offset(3, 5),
-                                    spreadRadius: 1)
-                              ],
-                              border: Border.all(
-                                width: 3,
-                                color: Color.fromARGB(255, 100, 238, 52),
-                              ),
-                              color: Color.fromARGB(255, 235, 252, 228)),
-                          child: SizedBox(
-                            height: 150,
-                            width: MediaQuery.of(context).size.width / 2.4,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15.0),
-                                  child: Text(
-                                    "Grafik Stok Komoditas",
-                                    style: GoogleFonts.inter(
-                                        fontSize: 15,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Image.asset(
-                                  "images/diagrambatang.png",
-                                  width: 100,
-                                )
-                              ],
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            grafik_kebutuhan()));
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 1,
+                                            color: Color.fromARGB(38, 0, 0, 0),
+                                            offset: Offset(3, 5),
+                                            spreadRadius: 1)
+                                      ],
+                                      border: Border.all(
+                                        width: 3,
+                                        color:
+                                            Color.fromARGB(255, 100, 238, 52),
+                                      ),
+                                      color:
+                                          Color.fromARGB(255, 235, 252, 228)),
+                                  child: SizedBox(
+                                    height: 150,
+                                    width:
+                                        MediaQuery.of(context).size.width / 2.4,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15.0),
+                                          child: Text(
+                                            "Grafik Stok Komoditas",
+                                            style: GoogleFonts.inter(
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w400),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        Image.asset(
+                                          "images/diagrambatang.png",
+                                          width: 100,
+                                        )
+                                      ],
+                                    ),
+                                  )),
                             ),
-                          )),
+                          ]),
                     ],
                   ),
 

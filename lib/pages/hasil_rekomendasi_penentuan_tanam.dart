@@ -13,7 +13,8 @@ import '../components/navigation_button.dart';
 import 'Petani/home_page_petani.dart';
 
 class hasil_rekomendasi_penentuan_tanam extends StatefulWidget {
-  const hasil_rekomendasi_penentuan_tanam({super.key});
+  final List hasil;
+  const hasil_rekomendasi_penentuan_tanam({super.key, required this.hasil});
 
   @override
   State<hasil_rekomendasi_penentuan_tanam> createState() =>
@@ -241,7 +242,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                                           vertical: 12.0, horizontal: 20),
                                       child: Center(
                                         child: Text(
-                                          "Januari",
+                                          widget.hasil[0][0],
                                           style: GoogleFonts.inter(
                                               fontSize: 18,
                                               color: Colors.white,
@@ -255,7 +256,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Column(
                             children: [
                               Text(
-                                "Prediksi Tanam",
+                                "Prediksi Panen",
                                 style: GoogleFonts.inter(
                                     fontSize: 18,
                                     color: Colors.black26,
@@ -274,7 +275,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                                           vertical: 12.0, horizontal: 20),
                                       child: Center(
                                         child: Text(
-                                          "Maret",
+                                          widget.hasil[0][4],
                                           style: GoogleFonts.inter(
                                               fontSize: 18,
                                               color: Colors.white,
@@ -308,7 +309,7 @@ class _hasil_rekomendasi_penentuan_tanamState
 
                             //nilai perkiraan hasil panen
                             TextSpan(
-                              text: "2169.8/kg",
+                              text: widget.hasil[0][2] + "/kg",
                               style: GoogleFonts.inter(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -354,9 +355,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              HargaPanen: "Rp. 47.750/kg",
-                              TotalPendapatan: "Rp. 127.614.375",
-                              Title: "Januari")
+                              // ignore: prefer_interpolation_to_compose_strings
+                              HargaPanen:
+                                  "Rp. " + widget.hasil[1][1].toString(),
+                              // ignore: prefer_interpolation_to_compose_strings
+                              TotalPendapatan:
+                                  "Rp. " + widget.hasil[1][2].toString(),
+                              Title: widget.hasil[1][0])
                         ],
                       ),
                       SizedBox(
@@ -365,9 +370,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              HargaPanen: "Rp. 47.750/kg",
-                              TotalPendapatan: "Rp. 127.614.375",
-                              Title: "Februari")
+                              // ignore: prefer_interpolation_to_compose_strings
+                              HargaPanen:
+                                  "Rp. " + widget.hasil[2][1].toString(),
+                              // ignore: prefer_interpolation_to_compose_strings
+                              TotalPendapatan:
+                                  "Rp. " + widget.hasil[2][2].toString(),
+                              Title: widget.hasil[2][0])
                         ],
                       ),
                       SizedBox(
@@ -376,9 +385,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              HargaPanen: "Rp. 47.750/kg",
-                              TotalPendapatan: "Rp. 127.614.375",
-                              Title: "Maret")
+                              // ignore: prefer_interpolation_to_compose_strings
+                              HargaPanen:
+                                  "Rp. " + widget.hasil[3][1].toString(),
+                              // ignore: prefer_interpolation_to_compose_strings
+                              TotalPendapatan:
+                                  "Rp. " + widget.hasil[3][2].toString(),
+                              Title: widget.hasil[3][0])
                         ],
                       ),
                       SizedBox(
@@ -415,9 +428,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  HargaPanen: "Rp. 43.750/kg",
-                                  TotalPendapatan: "Rp. 127.614.375",
-                                  Title: "Januari")
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  HargaPanen:
+                                      "Rp. " + widget.hasil[4][1].toString(),
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  TotalPendapatan:
+                                      "Rp. " + widget.hasil[4][2].toString(),
+                                  Title: widget.hasil[4][0])
                             ],
                           ),
                           SizedBox(
@@ -426,9 +443,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  HargaPanen: "Rp. 37.750/kg",
-                                  TotalPendapatan: "Rp. 127.614.375",
-                                  Title: "Februari")
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  HargaPanen:
+                                      "Rp. " + widget.hasil[5][1].toString(),
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  TotalPendapatan:
+                                      "Rp. " + widget.hasil[5][2].toString(),
+                                  Title: widget.hasil[5][0])
                             ],
                           ),
                           SizedBox(
@@ -437,9 +458,13 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  HargaPanen: "Rp. 41.750/kg",
-                                  TotalPendapatan: "Rp. 120.663.402",
-                                  Title: "April")
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  HargaPanen:
+                                      "Rp. " + widget.hasil[6][1].toString(),
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  TotalPendapatan:
+                                      "Rp. " + widget.hasil[6][2].toString(),
+                                  Title: widget.hasil[5][0])
                             ],
                           ),
                           SizedBox(
