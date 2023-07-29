@@ -36,7 +36,7 @@ class _daftar_akun_petaniState extends State<daftar_akun_petani> {
 
   Future register() async {
     final response = await http.post(
-        Uri.parse("http://192.168.190.25/login_app/register_petani.php"),
+        Uri.parse("http://10.140.133.227/login_app/register_petani.php"),
         body: {
           "nama_lengkap": namaLengkap.text,
           "telp": telp.text,

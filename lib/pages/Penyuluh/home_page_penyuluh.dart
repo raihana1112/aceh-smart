@@ -19,7 +19,7 @@ class home_page_penyuluh extends StatefulWidget {
       {super.key,
       required this.username,
       required String telp,
-      required int id_user});
+      required int id_user, required id_penyuluh, required String instansi, required String nama_lengkap});
 
   @override
   State<home_page_penyuluh> createState() => _home_page_penyuluhState();

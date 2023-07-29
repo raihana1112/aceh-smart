@@ -14,12 +14,16 @@ const _url =
 /// Put your custom url here.
 
 class home_page_pemerintah extends StatefulWidget {
-  final String username;
+  final String username, nama_lengkap, telp, instansi, nip;
+  final int id_user;
   const home_page_pemerintah(
       {super.key,
       required this.username,
-      required String telp,
-      required int id_user});
+      required this.telp,
+      required this.id_user,
+      required this.instansi,
+      required this.nama_lengkap,
+      required this.nip});
 
   @override
   State<home_page_pemerintah> createState() => _home_page_pemerintahState();
@@ -420,9 +424,12 @@ class _home_page_pemerintahState extends State<home_page_pemerintah> {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         profile_page_pemerintah(
-                                          id_user: id_user,
-                                          username: username,
-                                        )));
+                                            id_user: id_user,
+                                            username: username,
+                                            instansi: instansi,
+                                            nip: nip,
+                                            telp: telp,
+                                            nama_lengkap: nama_lengkap)));
                           }),
                           child: Container(
                               width: 65,

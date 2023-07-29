@@ -13,9 +13,15 @@ import 'Pemerintah/home_page_pemerintah.dart';
 import 'Penyuluh/home_page_penyuluh.dart';
 import 'Petani/home_page_petani.dart';
 
+// ignore: must_be_immutable
 class hasil_rekomendasi_kapan_tanam extends StatefulWidget {
   final List hasil;
-  hasil_rekomendasi_kapan_tanam({super.key, required this.hasil});
+  String nama_lahan, lokasi;
+  hasil_rekomendasi_kapan_tanam(
+      {super.key,
+      required this.hasil,
+      required this.lokasi,
+      required this.nama_lahan});
 
   @override
   State<hasil_rekomendasi_kapan_tanam> createState() =>
@@ -130,7 +136,7 @@ class _hasil_rekomendasi_kapantanamState
                                 height: 25,
                               ),
                               Text(
-                                "Lahan Baroh",
+                                widget.nama_lahan,
                                 style: GoogleFonts.inter(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -140,7 +146,7 @@ class _hasil_rekomendasi_kapantanamState
                                 height: 5,
                               ),
                               Text(
-                                "02 April 2023",
+                                widget.hasil[0][4],
                                 style: GoogleFonts.inter(
                                     fontSize: 15,
                                     color: Color.fromARGB(255, 196, 196, 196),
@@ -191,7 +197,7 @@ class _hasil_rekomendasi_kapantanamState
                                 height: 15,
                               ),
                               Text(
-                                "Pante Baro Kumbang, Kec. Peusangan siblah kruenng, Kab. Bireuen.",
+                                widget.lokasi,
                                 style: GoogleFonts.inter(
                                     fontSize: 12,
                                     color: Colors.black,
@@ -229,10 +235,50 @@ class _hasil_rekomendasi_kapantanamState
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Text(
+                            "Perhitungan berdasarkan bulan terdekat dari " +
+                                widget.hasil[0][4].toString() +
+                                " \n dengan perhitungan berdasarkan",
+                            style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 179, 179, 179),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
                       Text(
-                        "Tanaman yang bagus untuk ditanam",
+                        "Kelembaban : " + widget.hasil[0][0].toString() + " %",
                         style: GoogleFonts.inter(
-                            fontSize: 17,
+                            fontSize: 14,
+                            color: Color.fromARGB(255, 179, 179, 179),
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        "Curah Hujan : " +
+                            widget.hasil[0][1].toString() +
+                            " mm",
+                        style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: Color.fromARGB(255, 179, 179, 179),
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        "Penyinaran Matahari : " +
+                            widget.hasil[0][2].toString() +
+                            " /jam",
+                        style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: Color.fromARGB(255, 179, 179, 179),
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        "Suhu Rata-Rata : " +
+                            widget.hasil[0][3].toString() +
+                            " \u2103",
+                        style: GoogleFonts.inter(
+                            fontSize: 14,
                             color: Color.fromARGB(255, 179, 179, 179),
                             fontWeight: FontWeight.w500),
                       ),
@@ -248,24 +294,14 @@ class _hasil_rekomendasi_kapantanamState
                       Row(
                         children: [
                           statusTanaman(
-                              perkiraanPanen: widget.hasil[0][2],
-                              hasilPanen:
-                                  widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
-                              HargaPanen: widget.hasil[0][5],
-                              TotalPendapatan: widget.hasil[0][6],
-                              Title: widget.hasil[0][0])
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          statusTanaman(
                               perkiraanPanen: widget.hasil[1][2],
-                              hasilPanen: widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
+                              hasilPanen: widget.hasil[1][3].toString() +
+                                  " kg/" +
+                                  widget.hasil[1][4].toString() +
+                                  "ton",
                               HargaPanen: widget.hasil[1][5],
                               TotalPendapatan: widget.hasil[1][6],
+                              PendapatanBersih: widget.hasil[1][7],
                               Title: widget.hasil[1][0])
                         ],
                       ),
@@ -276,10 +312,31 @@ class _hasil_rekomendasi_kapantanamState
                         children: [
                           statusTanaman(
                               perkiraanPanen: widget.hasil[2][2],
-                              hasilPanen: widget.hasil[0][3].toString() + " kg/" +  widget.hasil[0][4].toString() + "ton",
+                              hasilPanen: widget.hasil[2][3].toString() +
+                                  " kg/" +
+                                  widget.hasil[2][4].toString() +
+                                  "ton",
                               HargaPanen: widget.hasil[2][5],
                               TotalPendapatan: widget.hasil[2][6],
+                              PendapatanBersih: widget.hasil[2][7],
                               Title: widget.hasil[2][0])
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          statusTanaman(
+                              perkiraanPanen: widget.hasil[3][2],
+                              hasilPanen: widget.hasil[3][3].toString() +
+                                  " kg/" +
+                                  widget.hasil[3][4].toString() +
+                                  "ton",
+                              HargaPanen: widget.hasil[3][5],
+                              TotalPendapatan: widget.hasil[3][6],
+                              PendapatanBersih: widget.hasil[3][7],
+                              Title: widget.hasil[3][0])
                         ],
                       ),
                     ],
@@ -292,9 +349,7 @@ class _hasil_rekomendasi_kapantanamState
                   //button
                   navigation_button(
                       nextPage: home_page(
-                        username: username,
-                        telp: telp,
-                        id_user: id_user,
+                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
                       ),
                       title: "Beranda",
                       warnaText: Colors.white)

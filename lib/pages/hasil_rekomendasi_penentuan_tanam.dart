@@ -12,9 +12,15 @@ import 'package:http/http.dart' as http;
 import '../components/navigation_button.dart';
 import 'Petani/home_page_petani.dart';
 
+// ignore: must_be_immutable
 class hasil_rekomendasi_penentuan_tanam extends StatefulWidget {
   final List hasil;
-  const hasil_rekomendasi_penentuan_tanam({super.key, required this.hasil});
+  String nama_lahan, lokasi;
+  hasil_rekomendasi_penentuan_tanam(
+      {super.key,
+      required this.hasil,
+      required this.lokasi,
+      required this.nama_lahan});
 
   @override
   State<hasil_rekomendasi_penentuan_tanam> createState() =>
@@ -129,7 +135,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                                 height: 25,
                               ),
                               Text(
-                                "Lahan Baroh",
+                                widget.nama_lahan,
                                 style: GoogleFonts.inter(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -139,7 +145,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                                 height: 5,
                               ),
                               Text(
-                                "02 April 2023",
+                                widget.hasil[0][1],
                                 style: GoogleFonts.inter(
                                     fontSize: 15,
                                     color: Color.fromARGB(255, 196, 196, 196),
@@ -190,7 +196,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                                 height: 15,
                               ),
                               Text(
-                                "Pante Baro Kumbang, Kec. Peusangan siblah kruenng, Kab. Bireuen.",
+                                widget.lokasi,
                                 style: GoogleFonts.inter(
                                     fontSize: 12,
                                     color: Colors.black,
@@ -309,7 +315,12 @@ class _hasil_rekomendasi_penentuan_tanamState
 
                             //nilai perkiraan hasil panen
                             TextSpan(
-                              text: widget.hasil[0][2] + "/kg",
+                              // ignore: prefer_interpolation_to_compose_strings
+                              text: widget.hasil[0][2].toString() +
+                                  " /kg, " +
+                                  widget.hasil[0][3].toString() +
+                                  " ton",
+                              //text: widget.hasil[0][2],
                               style: GoogleFonts.inter(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -338,7 +349,7 @@ class _hasil_rekomendasi_penentuan_tanamState
                         ],
                       ),
                       Text(
-                        "Perhitungan Berdasarkan Bulan Terdekat",
+                        "Perhitungan Berdasarkan Bulan Tanam Terdekat",
                         style: GoogleFonts.inter(
                             fontSize: 17,
                             color: Color.fromARGB(255, 179, 179, 179),
@@ -355,12 +366,15 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              // ignore: prefer_interpolation_to_compose_strings
                               HargaPanen:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[1][1].toString(),
-                              // ignore: prefer_interpolation_to_compose_strings
                               TotalPendapatan:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[1][2].toString(),
+                              PendapatanBersih:
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  "Rp. " + widget.hasil[1][3].toString(),
                               Title: widget.hasil[1][0])
                         ],
                       ),
@@ -370,12 +384,15 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              // ignore: prefer_interpolation_to_compose_strings
                               HargaPanen:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[2][1].toString(),
-                              // ignore: prefer_interpolation_to_compose_strings
                               TotalPendapatan:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[2][2].toString(),
+                              PendapatanBersih:
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  "Rp. " + widget.hasil[2][3].toString(),
                               Title: widget.hasil[2][0])
                         ],
                       ),
@@ -385,12 +402,15 @@ class _hasil_rekomendasi_penentuan_tanamState
                       Row(
                         children: [
                           prediksiKpnTanam(
-                              // ignore: prefer_interpolation_to_compose_strings
                               HargaPanen:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[3][1].toString(),
-                              // ignore: prefer_interpolation_to_compose_strings
                               TotalPendapatan:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   "Rp. " + widget.hasil[3][2].toString(),
+                              PendapatanBersih:
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  "Rp. " + widget.hasil[3][3].toString(),
                               Title: widget.hasil[3][0])
                         ],
                       ),
@@ -428,12 +448,15 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   HargaPanen:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[4][1].toString(),
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   TotalPendapatan:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[4][2].toString(),
+                                  PendapatanBersih:
+                                      // ignore: prefer_interpolation_to_compose_strings
+                                      "Rp. " + widget.hasil[4][3].toString(),
                                   Title: widget.hasil[4][0])
                             ],
                           ),
@@ -443,12 +466,15 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   HargaPanen:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[5][1].toString(),
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   TotalPendapatan:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[5][2].toString(),
+                                  PendapatanBersih:
+                                      // ignore: prefer_interpolation_to_compose_strings
+                                      "Rp. " + widget.hasil[5][3].toString(),
                                   Title: widget.hasil[5][0])
                             ],
                           ),
@@ -458,13 +484,16 @@ class _hasil_rekomendasi_penentuan_tanamState
                           Row(
                             children: [
                               prediksiKpnTanam(
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   HargaPanen:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[6][1].toString(),
-                                  // ignore: prefer_interpolation_to_compose_strings
                                   TotalPendapatan:
+                                      // ignore: prefer_interpolation_to_compose_strings
                                       "Rp. " + widget.hasil[6][2].toString(),
-                                  Title: widget.hasil[5][0])
+                                  PendapatanBersih:
+                                      // ignore: prefer_interpolation_to_compose_strings
+                                      "Rp. " + widget.hasil[6][3].toString(),
+                                  Title: widget.hasil[6][0])
                             ],
                           ),
                           SizedBox(
@@ -474,10 +503,11 @@ class _hasil_rekomendasi_penentuan_tanamState
                           //button
                           navigation_button(
                               nextPage: home_page(
-                                username: username,
-                                telp: telp,
-                                id_user: id_user,
-                              ),
+                                  id_user: id_user,
+                                  username: username,
+                                  telp: telp,
+                                  nama_lengkap: nama_lengkap,
+                                  alamat: alamat),
                               title: "Beranda",
                               warnaText: Colors.white)
                         ],

@@ -13,7 +13,16 @@ import 'package:http/http.dart' as http;
 import '../../components/text_fields.dart';
 
 class ubah_profile_pemerintah extends StatefulWidget {
-  const ubah_profile_pemerintah({super.key, required int id_user});
+  final String username, nama_lengkap, telp, instansi, nip;
+  final int id_user;
+  const ubah_profile_pemerintah(
+      {super.key,
+      required this.username,
+      required this.telp,
+      required this.id_user,
+      required this.instansi,
+      required this.nama_lengkap,
+      required this.nip});
 
   @override
   State<ubah_profile_pemerintah> createState() =>
@@ -24,50 +33,50 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
   bool isView = true;
   bool isView2 = true;
 
-  String nama = '';
-  String inst = '';
-  String nipp = '';
-  String telpp = '';
-  String username = '';
+  // String nama = '';
+  // String inst = '';
+  // String nipp = '';
+  // String telpp = '';
+  // String username = '';
 
-  TextEditingController nama_lengkap = TextEditingController();
-  TextEditingController instansi = TextEditingController();
-  TextEditingController nip = TextEditingController();
-  TextEditingController telp = TextEditingController();
-  TextEditingController user = TextEditingController();
-  TextEditingController pass = TextEditingController();
+  TextEditingController nama = TextEditingController();
+  TextEditingController instansii = TextEditingController();
+  TextEditingController nipp = TextEditingController();
+  TextEditingController telpp = TextEditingController();
+  TextEditingController userr = TextEditingController();
+  TextEditingController passs = TextEditingController();
 
-  Future<List> tampil_data() async {
-    try {
-      final response = await http.get(
-          Uri.parse("http://192.168.100.198/login_app/tampil_profile.php"));
-      var datauser = json.decode(response.body);
-      setState(() {
-        id_user = int.parse(datauser[0]['id']);
-        // id_user = datauser[0]['id'];
-        nama = datauser[0]['nama_lengkap'];
-        inst = datauser[0]['instansi'];
-        nipp = datauser[0]['nip'];
-        telpp = datauser[0]['telp'];
-        username = datauser[0]['username'];
-      });
-    } catch (e) {
-      print(e);
-    }
-    return [];
-  }
+  // Future<List> tampil_data() async {
+  //   try {
+  //     final response = await http.get(
+  //         Uri.parse("http://192.168.137.48/login_app/tampil_profile.php"));
+  //     var datauser = json.decode(response.body);
+  //     setState(() {
+  //       id_user = int.parse(datauser[0]['id']);
+  //       // id_user = datauser[0]['id'];
+  //       nama = datauser[0]['nama_lengkap'];
+  //       inst = datauser[0]['instansi'];
+  //       nipp = datauser[0]['nip'];
+  //       telpp = datauser[0]['telp'];
+  //       username = datauser[0]['username'];
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //   return [];
+  // }
 
   Future ubah() async {
     try {
       final response = await http.put(
-          Uri.parse("http://192.168.190.177/login_app/ubah_pofile.php"),
+          Uri.parse("http://10.140.133.227/login_app/ubah_pofile.php"),
           body: {
-            "nama_lengkap": nama_lengkap.text,
-            "instansi": instansi.text,
-            "nip": nip.text,
-            "telp": telp.text,
-            "username": user.text,
-            "password": pass.text,
+            "nama_lengkap": nama.text,
+            "instansi": instansii.text,
+            "nip": nipp.text,
+            "telp": telpp.text,
+            "username": userr.text,
+            "password": passs.text,
           });
       //var datauser = await json.decode(jsonEncode(response.body));
       if (response.body.isNotEmpty) {
@@ -81,8 +90,13 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                profile_page_pemerintah(username: username, id_user: id_user),
+            builder: (context) => profile_page_pemerintah(
+                id_user: id_user,
+                username: username,
+                instansi: instansi,
+                nip: nip,
+                telp: telp,
+                nama_lengkap: nama_lengkap),
           ),
         );
       }
@@ -94,7 +108,6 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
 
   @override
   Widget build(BuildContext context) {
-    tampil_data();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -261,13 +274,13 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: nama,
+                                  hintText: nama_lengkap,
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: nama_lengkap,
+                                controller: nama,
                               ),
                             ),
                           ],
@@ -299,13 +312,13 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: inst,
+                                  hintText: instansi,
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: instansi,
+                                controller: instansii,
                               ),
                             ),
                           ],
@@ -337,13 +350,13 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: nipp,
+                                  hintText: nip,
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: nip,
+                                controller: nipp,
                               ),
                             ),
                           ],
@@ -375,13 +388,13 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: telpp,
+                                  hintText: telp,
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: telp,
+                                controller: telpp,
                               ),
                             ),
                           ],
@@ -419,7 +432,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: user,
+                                controller: userr,
                               ),
                             ),
                           ],
@@ -448,7 +461,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                             ),
                             Expanded(
                               child: TextField(
-                                controller: pass,
+                                controller: passs,
                                 style: GoogleFonts.inter(
                                   fontSize: 15,
                                 ),
@@ -570,9 +583,7 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30))),
                       onPressed: () {
-                        print('username : ${username}');
-                        print('id : ${id_user}');
-                        print('nama : ${nama}');
+                        print(nama_lengkap);
                         // print('data : ${datauser}');
                         // ubah();
                       },

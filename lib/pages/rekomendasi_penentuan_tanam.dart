@@ -47,7 +47,7 @@ class _rekomendasi_penentuan_tanamState
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    hasil_rekomendasi_kapan_tanam(hasil: hasil)));
+                    hasil_rekomendasi_kapan_tanam(hasil: hasil, lokasi: kota.text, nama_lahan: namaLahan.text)));
       });
     } catch (e) {
       print(e);
@@ -77,9 +77,7 @@ class _rekomendasi_penentuan_tanamState
                               context,
                               MaterialPageRoute(
                                   builder: (context) => home_page(
-                                        username: username,
-                                        telp: telp,
-                                        id_user: id_user,
+                                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
                                       )));
                         },
                         child: Container(

@@ -3,11 +3,10 @@ import 'package:app_tanaman_ui/pages/Start%20View/Start3.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start1.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
 import 'package:app_tanaman_ui/pages/grafik_kebutuhan.dart';
+import 'package:app_tanaman_ui/pages/grafik_keseluruhan_bna.dart';
 import 'package:app_tanaman_ui/pages/grafik_stock.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
-import 'package:app_tanaman_ui/pages/status_tanaman.dart';
-import 'package:app_tanaman_ui/pages/status_tanaman2.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/Auth View/login_page.dart';
@@ -33,6 +32,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Start1());
+        home: const grafik_keseluruhan_bna());
   }
 }

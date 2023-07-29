@@ -9,12 +9,14 @@ class statusTanaman extends StatelessWidget {
   final String hasilPanen;
   final String HargaPanen;
   final String TotalPendapatan;
+  final String PendapatanBersih;
   const statusTanaman(
       {super.key,
       required this.perkiraanPanen,
       required this.hasilPanen,
       required this.HargaPanen,
       required this.TotalPendapatan,
+      required this.PendapatanBersih,
       required this.Title});
 
   @override
@@ -58,7 +60,7 @@ class statusTanaman extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Row(
                   children: [
@@ -97,6 +99,17 @@ class statusTanaman extends StatelessWidget {
                   children: [
                     Text(
                       "Total Pendapatan : " + TotalPendapatan,
+                      style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Perkiraan Pendapatan Bersih : " + PendapatanBersih,
                       style: GoogleFonts.inter(
                           fontSize: 12,
                           color: Colors.black,

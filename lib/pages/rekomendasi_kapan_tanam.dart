@@ -16,7 +16,6 @@ class rekomendasi_kapan_tanam extends StatefulWidget {
       _rekomendasi_kapan_tanamState();
 }
 
-String lokasi = '';
 String komoditas = '';
 int bulan = 0;
 int lahan = 0;
@@ -35,10 +34,10 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
       final response = await http.post(
           Uri.parse("http://192.168.137.48/login_app/data_waktu_tanam.php"),
           body: {
-            "lahan": luasLahan.text,
-            "komoditas": komoditas.text,
-            "bulan": bulanTanam.text,
             "lokasi": kota.text,
+            "jenis": komoditas.text,
+            "lahan": luasLahan.text,
+            "bulan": bulanTanam.text,
           });
 
       var hasil = json.decode(response.body);
@@ -46,8 +45,10 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    hasil_rekomendasi_penentuan_tanam(hasil: hasil)));
+                builder: (context) => hasil_rekomendasi_penentuan_tanam(
+                    hasil: hasil,
+                    lokasi: kota.text,
+                    nama_lahan: namaLahan.text)));
       });
     } catch (e) {
       print(e);
@@ -77,9 +78,7 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => home_page(
-                                        username: username,
-                                        telp: telp,
-                                        id_user: id_user,
+                                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
                                       )));
                         },
                         child: Container(
@@ -240,7 +239,7 @@ class _rekomendasi_kapan_tanamState extends State<rekomendasi_kapan_tanam> {
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: luasLahan,
+                                controller: komoditas,
                               ),
                             ),
                           ],

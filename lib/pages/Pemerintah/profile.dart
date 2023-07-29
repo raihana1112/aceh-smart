@@ -14,10 +14,16 @@ import 'package:google_fonts/google_fonts.dart';
 import '../cuaca_page.dart';
 
 class profile_page_pemerintah extends StatefulWidget {
-  final String username;
+  final String username, nama_lengkap, telp, instansi, nip;
   final int id_user;
   const profile_page_pemerintah(
-      {super.key, required this.username, required this.id_user});
+      {super.key,
+      required this.username,
+      required this.telp,
+      required this.id_user,
+      required this.instansi,
+      required this.nama_lengkap,
+      required this.nip});
 
   @override
   State<profile_page_pemerintah> createState() =>
@@ -107,7 +113,12 @@ class _profile_page_pemerintahState extends State<profile_page_pemerintah> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => ubah_profile_pemerintah(
-                                      id_user: id_user)));
+                                      id_user: id_user,
+                                      username: username,
+                                      instansi: instansi,
+                                      nip: nip,
+                                      telp: telp,
+                                      nama_lengkap: nama_lengkap)));
                         },
                         child: Container(
                           decoration: BoxDecoration(

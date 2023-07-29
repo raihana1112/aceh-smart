@@ -311,7 +311,6 @@ class Stock {
 
   factory Stock.fromMap(Map<String, dynamic> map) {
     return Stock(
-        bulan_tanam: map["bulan_tanam"],
-        hasil_panen: int.parse(map["hasil_panen"]));
+        bulan_tanam: map["bulan"], hasil_panen: int.parse(map["hasil_panen"]));
   }
 }

@@ -28,9 +28,14 @@ class LoginPage extends StatefulWidget {
 }
 
 int id_user = 0;
+String nama_lengkap = '';
 String username = '';
 String telp = '';
 String level = '';
+String instansi = '';
+String id_penyuluh = '';
+String nip = '';
+String alamat = '';
 
 class _LoginPageState extends State<LoginPage> {
   bool isHide = true;
@@ -40,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<List> _login() async {
     try {
       final response = await http
-          .post(Uri.parse("http://192.168.137.48/login_app/login.php"), body: {
+          .post(Uri.parse("http://10.140.133.227/login_app/login.php"), body: {
         "username": user.text,
         "password": pass.text,
       });
@@ -54,6 +59,11 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         setState(() {
           id_user = int.parse(datauser[0]['id']);
+          nama_lengkap = datauser[0]['nama_lengkap'];
+          instansi = datauser[0]['instansi'];
+          nip = datauser[0]['nip'];
+          id_penyuluh = datauser[0]['id_penyuluh'];
+          alamat = datauser[0]['alamat'];
           username = datauser[0]['username'];
           telp = datauser[0]['telp'];
           level = datauser[0]['level'];
@@ -370,7 +380,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                home_page(id_user: id_user, username: username, telp: telp)));
+                home_page(id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat)));
   }
 
   void pemerintah() {
@@ -378,7 +388,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) => home_page_pemerintah(
-                id_user: id_user, username: username, telp: telp)));
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, nip: nip, instansi:instansi)));
   }
 
   void penyuluh() {
@@ -386,6 +396,6 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) => home_page_penyuluh(
-                id_user: id_user, username: username, telp: telp)));
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, instansi: instansi, id_penyuluh:id_penyuluh)));
   }
 }

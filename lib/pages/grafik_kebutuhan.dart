@@ -40,13 +40,13 @@ class _grafik_kebutuhanState extends State<grafik_kebutuhan> {
     List<Kebutuhan> list1 = [];
     List<Kebutuhan> list2 = [];
     final response = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/cabai_acehBesar.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/cabai_acehBesar.php"));
     list = fromJson(response.body);
     final response1 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/cabai_bandaAceh.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/cabai_bandaAceh.php"));
     list1 = fromJson(response1.body);
     final response2 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/cabai_lhok.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/cabai_lhok.php"));
     list2 = fromJson(response2.body);
 
     hasilCabai = list;
@@ -60,17 +60,17 @@ class _grafik_kebutuhanState extends State<grafik_kebutuhan> {
     List<Kebutuhan> list1 = [];
     List<Kebutuhan> list2 = [];
     final response = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/bawang_acehBesar.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/bawang_acehBesar.php"));
     if (response.statusCode == 200) {
       list = fromJson(response.body);
     }
     final response1 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/bawang_bandaAceh.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/bawang_bandaAceh.php"));
     if (response1.statusCode == 200) {
       list1 = fromJson(response1.body);
     }
     final response2 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/bawang_lhok.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/bawang_lhok.php"));
     if (response2.statusCode == 200) {
       list2 = fromJson(response2.body);
     }
@@ -86,19 +86,19 @@ class _grafik_kebutuhanState extends State<grafik_kebutuhan> {
     List<Kebutuhan> list1 = [];
     List<Kebutuhan> list2 = [];
     final response = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/beras_acehBesar.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/beras_acehBesar.php"));
 
     if (response.statusCode == 200) {
       list = fromJson(response.body);
     }
 
     final response1 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/beras_bandaAceh.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/beras_bandaAceh.php"));
     if (response1.statusCode == 200) {
       list1 = fromJson(response1.body);
     }
     final response2 = await http.get(Uri.parse(
-        "http://192.168.137.48login_app/grafik_kebutuhan/beras_lhok.php"));
+        "http://192.168.137.48/login_app/grafik_kebutuhan/beras_lhok.php"));
     if (response2.statusCode == 200) {
       list2 = fromJson(response2.body);
     }
@@ -324,6 +324,6 @@ class Kebutuhan {
 
   factory Kebutuhan.fromMap(Map<String, dynamic> map) {
     return Kebutuhan(
-        bulan: map["bulan"], kebutuhan: int.parse(map["kebutuhan"]));
+        bulan: map["bulan"], kebutuhan: int.parse(map["hasil_panen"]));
   }
 }

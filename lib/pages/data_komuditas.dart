@@ -156,9 +156,7 @@ class _data_komuditasState extends State<data_komuditas> {
                     ),
                     navigation_button(
                       nextPage: home_page(
-                        username: username,
-                        telp: telp,
-                        id_user: id_user,
+                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
                       ),
                       title: "Simpan Data",
                       warnaText: Colors.black87,

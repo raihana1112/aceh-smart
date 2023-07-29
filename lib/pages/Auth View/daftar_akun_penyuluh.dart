@@ -36,7 +36,7 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
 
   Future register() async {
     final response = await http.post(
-        Uri.parse("http://192.168.190.25/login_app/register_penyuluh.php"),
+        Uri.parse("http://10.140.133.227/login_app/register_penyuluh.php"),
         body: {
           "nama_lengkap": namaLengkap.text,
           "instansi": instansi.text,
@@ -145,6 +145,9 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 237, 237, 237),
@@ -180,6 +183,9 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 237, 237, 237),
@@ -213,6 +219,9 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                           ],
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -248,6 +257,9 @@ class _daftar_akun_penyuluhanState extends State<daftar_akun_penyuluhan> {
                           ],
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Container(
                       decoration: BoxDecoration(

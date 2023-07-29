@@ -29,7 +29,7 @@ class _lupa_passwordState extends State<lupa_password> {
 
   Future ubah() async {
     final response = await http.post(
-        Uri.parse("http://192.168.100.198/login_app/ubah_password.php"),
+        Uri.parse("http://10.140.133.227/login_app/ubah_password.php"),
         body: {
           "username": user.text,
           "telp": telp.text,

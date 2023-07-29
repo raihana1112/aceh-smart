@@ -7,11 +7,13 @@ class prediksiKpnTanam extends StatelessWidget {
   final String Title;
   final String HargaPanen;
   final String TotalPendapatan;
+  final String PendapatanBersih;
   const prediksiKpnTanam(
       {super.key,
       required this.HargaPanen,
       required this.TotalPendapatan,
-      required this.Title});
+      required this.Title,
+      required this.PendapatanBersih});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class prediksiKpnTanam extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
                   children: [
@@ -71,6 +73,17 @@ class prediksiKpnTanam extends StatelessWidget {
                   children: [
                     Text(
                       "Total Pendapatan : " + TotalPendapatan,
+                      style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Perkiraan Pendapatan Bersih: " + PendapatanBersih,
                       style: GoogleFonts.inter(
                           fontSize: 12,
                           color: Colors.black,
