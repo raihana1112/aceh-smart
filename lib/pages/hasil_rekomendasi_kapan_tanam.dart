@@ -16,12 +16,9 @@ import 'Petani/home_page_petani.dart';
 // ignore: must_be_immutable
 class hasil_rekomendasi_kapan_tanam extends StatefulWidget {
   final List hasil;
-  String nama_lahan, lokasi;
+  String nama_lahan;
   hasil_rekomendasi_kapan_tanam(
-      {super.key,
-      required this.hasil,
-      required this.lokasi,
-      required this.nama_lahan});
+      {super.key, required this.hasil, required this.nama_lahan});
 
   @override
   State<hasil_rekomendasi_kapan_tanam> createState() =>
@@ -196,16 +193,7 @@ class _hasil_rekomendasi_kapantanamState
                               SizedBox(
                                 height: 15,
                               ),
-                              Text(
-                                widget.lokasi,
-                                style: GoogleFonts.inter(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
+
                               Text(
                                 "ACEH",
                                 style: GoogleFonts.inter(
@@ -347,12 +335,29 @@ class _hasil_rekomendasi_kapantanamState
                   ),
 
                   //button
-                  navigation_button(
-                      nextPage: home_page(
-                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 169, 240, 135),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        onPressed: () {
+                          check();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Beranda",
+                            style: GoogleFonts.inter(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
                       ),
-                      title: "Beranda",
-                      warnaText: Colors.white)
+                    ),
                 ],
               ),
             ),
@@ -365,4 +370,38 @@ class _hasil_rekomendasi_kapantanamState
       ),
     );
   }
+void check(){
+    if (level == 'pemerintah') {
+          pemerintah();
+        } else if (level == 'penyuluh') {
+          penyuluh();
+        } else {
+          petani();
+        }
+  }
+
+  void petani() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                home_page(id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat, level:level)));
+  }
+
+  void pemerintah() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => home_page_pemerintah(
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, nip: nip, instansi:instansi, level:level)));
+  }
+
+  void penyuluh() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => home_page_penyuluh(
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, instansi: instansi, id_penyuluh:id_penyuluh, level:level)));
+  }
+
 }

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 import 'dart:convert';
 
-import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
-import 'package:app_tanaman_ui/pages/Petani/home_page_petani.dart';
 import 'package:app_tanaman_ui/pages/hasil_rekomendasi_kapan_tanam.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,28 +15,38 @@ class rekomendasi_penentuan_tanam extends StatefulWidget {
       _rekomendasi_penentuan_tanamState();
 }
 
-String lokasi = '';
-int bulan = 0;
+String? kota;
+String? bulan;
+int? bulanInteger;
 int lahan = 0;
+List listItem1 = ["banda aceh", "aceh besar", "lhokseumawe"];
+List listItem2 = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12'
+];
 
 class _rekomendasi_penentuan_tanamState
     extends State<rekomendasi_penentuan_tanam> {
   TextEditingController namaLahan = TextEditingController();
   TextEditingController luasLahan = TextEditingController();
-  TextEditingController bulanTanam = TextEditingController();
-  TextEditingController kota = TextEditingController();
   TextEditingController kecamatan = TextEditingController();
   TextEditingController desa = TextEditingController();
 
   Future<List> _check() async {
     try {
       final response = await http.post(
-          Uri.parse("http://192.168.137.48/login_app/data_jns_tanaman.php"),
-          body: {
-            "lokasi": kota.text,
-            "bulan": bulanTanam.text,
-            "lahan": luasLahan.text
-          });
+          Uri.parse("http://10.10.3.16/login_app/data_jns_tanaman.php"),
+          body: {"lokasi": kota, "bulan": bulan, "lahan": luasLahan.text});
 
       var hasil = json.decode(response.body);
       //print(hasil);
@@ -46,8 +54,8 @@ class _rekomendasi_penentuan_tanamState
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    hasil_rekomendasi_kapan_tanam(hasil: hasil, lokasi: kota.text, nama_lahan: namaLahan.text)));
+                builder: (context) => hasil_rekomendasi_kapan_tanam(
+                    hasil: hasil, nama_lahan: namaLahan.text)));
       });
     } catch (e) {
       print(e);
@@ -73,12 +81,7 @@ class _rekomendasi_penentuan_tanamState
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => home_page(
-                                        id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat
-                                      )));
+                          Navigator.pop(context);
                         },
                         child: Container(
                             decoration: BoxDecoration(
@@ -142,10 +145,6 @@ class _rekomendasi_penentuan_tanamState
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Row(
                           children: [
-                            Image.asset(
-                              "images/username.png",
-                              color: Colors.black,
-                            ),
                             SizedBox(
                               width: 15,
                             ),
@@ -182,8 +181,6 @@ class _rekomendasi_penentuan_tanamState
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Row(
                           children: [
-                            Image.asset("images/alamat.png",
-                                color: Colors.black),
                             SizedBox(
                               width: 15,
                             ),
@@ -195,7 +192,7 @@ class _rekomendasi_penentuan_tanamState
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Luas Lahan",
+                                  hintText: "Luas Lahan (m2) (Wajib Diisi)",
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
@@ -221,25 +218,44 @@ class _rekomendasi_penentuan_tanamState
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Row(
                           children: [
-                            Image.asset("images/nip.png", color: Colors.black),
-                            SizedBox(
-                              width: 15,
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ],
                             ),
-                            Expanded(
-                              child: TextField(
-                                //SizedBox(height: 15),
-                                style: GoogleFonts.inter(
-                                  fontSize: 14,
+                            SizedBox(
+                              width: 2,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.75,
+                              child: Expanded(
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton(
+                                    isExpanded: true,
+                                    value: bulan,
+                                    hint: Text(
+                                      'Perkiraan Bulan Tanam (Wajib Diisi)',
+                                      style: GoogleFonts.inter(
+                                          fontSize: 14,
+                                          color: Colors.black38,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    items: listItem2.map((x) {
+                                      return DropdownMenuItem(
+                                        value: x,
+                                        child: Text(x.toString()),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        bulan = value.toString();
+                                        bulanInteger = setBulan(bulan!);
+                                      });
+                                    },
+                                  ),
                                 ),
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Bulan Tanam",
-                                  hintStyle: GoogleFonts.inter(
-                                      fontSize: 14,
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                controller: bulanTanam,
                               ),
                             ),
                           ],
@@ -258,8 +274,61 @@ class _rekomendasi_penentuan_tanamState
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Row(
                           children: [
-                            Image.asset("images/telepon.png",
-                                color: Colors.black),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 2,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.75,
+                              child: Expanded(
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton(
+                                    isExpanded: true,
+                                    value: kota,
+                                    hint: Text(
+                                      'Pilihan Kota/Kabupaten (Wajib Diisi)',
+                                      style: GoogleFonts.inter(
+                                          fontSize: 14,
+                                          color: Colors.black38,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    items: listItem1.map((x) {
+                                      return DropdownMenuItem(
+                                        value: x.toString(),
+                                        child: Text(x),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        kota = value.toString();
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
                             SizedBox(
                               width: 15,
                             ),
@@ -271,20 +340,56 @@ class _rekomendasi_penentuan_tanamState
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Kota",
+                                  hintText: "Kecamatan",
                                   hintStyle: GoogleFonts.inter(
                                       fontSize: 14,
                                       color: Colors.black38,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                controller: kota,
+                                controller: luasLahan,
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-
+                    //textfield
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: TextField(
+                                //SizedBox(height: 15),
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                ),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Desa",
+                                  hintStyle: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: Colors.black38,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                controller: luasLahan,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 40,
                     ),
@@ -333,6 +438,37 @@ class _rekomendasi_penentuan_tanamState
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0);
+  }
+
+  int setBulan(String bulan) {
+    switch (bulan) {
+      case '1':
+        return 1;
+      case '2':
+        return 2;
+      case '3':
+        return 3;
+      case '4':
+        return 4;
+      case '5':
+        return 5;
+      case '6':
+        return 6;
+      case '7':
+        return 7;
+      case '8':
+        return 8;
+      case '9':
+        return 9;
+      case '10':
+        return 10;
+      case '11':
+        return 11;
+      case '12':
+        return 12;
+    }
+
+    return 0;
   }
 
   // void hasil() {

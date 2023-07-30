@@ -8,12 +8,20 @@ class prediksiKpnTanam extends StatelessWidget {
   final String HargaPanen;
   final String TotalPendapatan;
   final String PendapatanBersih;
+  final String kelembaban;
+  final String curahHujan;
+  final String penyinaranMatahari;
+  final String suhuRata;
   const prediksiKpnTanam(
       {super.key,
       required this.HargaPanen,
       required this.TotalPendapatan,
       required this.Title,
-      required this.PendapatanBersih});
+      required this.PendapatanBersih,
+      required this.kelembaban,
+      required this.curahHujan,
+      required this.penyinaranMatahari,
+      required this.suhuRata});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +61,74 @@ class prediksiKpnTanam extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Perhitungan Berdasarkan",
+                              style: GoogleFonts.inter(
+                                  fontSize: 10,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Kelembapan udara : " + kelembaban + " %",
+                              style: GoogleFonts.inter(
+                                  fontSize: 9,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Curah hujan : " + curahHujan + " (mm)",
+                              style: GoogleFonts.inter(
+                                  fontSize: 9,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Penyinaran Matahari : " +
+                                  penyinaranMatahari +
+                                  " /jam",
+                              style: GoogleFonts.inter(
+                                  fontSize: 9,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Suhu rata-rata : " + suhuRata + " C",
+                              style: GoogleFonts.inter(
+                                  fontSize: 9,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
                   ],
                 ),
                 SizedBox(

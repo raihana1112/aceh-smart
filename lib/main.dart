@@ -1,10 +1,15 @@
 // ignore_for_file: unused_import
+import 'package:app_tanaman_ui/pages/Auth%20View/daftar_akun_petani.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_kebutuhan.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_keseluruhan_ab.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_keseluruhan_bna.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_keseluruhan_lhok.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_stock.dart';
+import 'package:app_tanaman_ui/pages/Pemerintah/home_page_pemerintah.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/Start3.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start1.dart';
 import 'package:app_tanaman_ui/pages/Start%20View/start2.dart';
-import 'package:app_tanaman_ui/pages/grafik_kebutuhan.dart';
-import 'package:app_tanaman_ui/pages/grafik_keseluruhan_bna.dart';
-import 'package:app_tanaman_ui/pages/grafik_stock.dart';
+import 'package:app_tanaman_ui/pages/data_komuditas.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +37,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const grafik_keseluruhan_bna());
+        home: LoginPage());
   }
 }

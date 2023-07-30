@@ -67,7 +67,7 @@ class _profile_page_penyluhState extends State<profile_page_penyluh> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Maulidil",
+                                  username,
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       color: Colors.black,

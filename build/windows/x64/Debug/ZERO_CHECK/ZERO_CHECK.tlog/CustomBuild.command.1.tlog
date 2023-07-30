@@ -1,0 +1,10 @@
+^C:\USERS\ASUS\VIDEOS\ACEH-SMART-MASTER\BUILD\WINDOWS\CMAKEFILES\06C2CFC2390D76E4090FF3C04AA79EC5\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Asus/Videos/aceh-smart-master/windows -BC:/Users/Asus/Videos/aceh-smart-master/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Asus/Videos/aceh-smart-master/build/windows/app_tanaman_ui.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

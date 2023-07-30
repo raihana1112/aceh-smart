@@ -7,9 +7,9 @@ import '../../components/navigation_button.dart';
 import 'Petani/home_page_petani.dart';
 import 'Penyuluh/home_page_penyuluh.dart';
 import 'Pemerintah/home_page_pemerintah.dart';
-import 'grafik_keseluruhan_bna.dart';
-import 'grafik_keseluruhan_ab.dart';
-import 'grafik_keseluruhan_lhok.dart';
+import 'Grafik/grafik_keseluruhan_bna.dart';
+import 'Grafik/grafik_keseluruhan_ab.dart';
+import 'Grafik/grafik_keseluruhan_lhok.dart';
 
 class pilih_kota extends StatefulWidget {
   const pilih_kota({super.key});

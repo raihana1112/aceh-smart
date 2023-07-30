@@ -1,0 +1,13 @@
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/CMakeFiles/INSTALL.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/CMakeFiles/ALL_BUILD.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/flutter/CMakeFiles/flutter_assemble.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/flutter/CMakeFiles/INSTALL.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/runner/CMakeFiles/app_tanaman_ui.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/runner/CMakeFiles/INSTALL.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/runner/CMakeFiles/ALL_BUILD.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/plugins/url_launcher_windows/CMakeFiles/url_launcher_windows_plugin.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/plugins/url_launcher_windows/CMakeFiles/INSTALL.dir
+C:/Users/Asus/Videos/aceh-smart-master/build/windows/plugins/url_launcher_windows/CMakeFiles/ALL_BUILD.dir

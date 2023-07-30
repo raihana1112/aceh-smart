@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:app_tanaman_ui/pages/Auth%20View/login_page.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_kebutuhan.dart';
+import 'package:app_tanaman_ui/pages/Grafik/grafik_stock.dart';
 import 'package:app_tanaman_ui/pages/Petani/profile.dart';
 import 'package:app_tanaman_ui/pages/cuaca_page.dart';
 import 'package:app_tanaman_ui/pages/data_komuditas.dart';
-import 'package:app_tanaman_ui/pages/grafik_kebutuhan.dart';
+import 'package:app_tanaman_ui/pages/pilih_kota.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_kapan_tanam.dart';
 import 'package:app_tanaman_ui/pages/rekomendasi_penentuan_tanam.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,9 @@ class home_page extends StatefulWidget {
       {super.key,
       required this.username,
       required String telp,
-      required int id_user, required String alamat, required String nama_lengkap});
+      required int id_user,
+      required String alamat,
+      required String nama_lengkap, required String level});
 
   @override
   State<home_page> createState() => _home_pageState();
@@ -448,8 +452,7 @@ class _home_pageState extends State<home_page> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            grafik_kebutuhan()));
+                                        builder: (context) => grafik_stock()));
                               },
                               child: Container(
                                   decoration: BoxDecoration(
@@ -501,8 +504,94 @@ class _home_pageState extends State<home_page> {
                   ),
 
                   SizedBox(
-                    height: 75,
+                    height: 20,
                   ),
+                  Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 1,
+                                color: Color.fromARGB(38, 0, 0, 0),
+                                offset: Offset(0, 2),
+                                spreadRadius: 1)
+                          ],
+                          border: Border.all(
+                            width: 3,
+                            color: Color.fromARGB(255, 100, 238, 52),
+                          ),
+                          color: Color.fromARGB(255, 235, 252, 228)),
+                      child: SizedBox(
+                        height: 160,
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "images/diagrambatang.png",
+                                    width: 75,
+                                  ),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Lihat Grafik",
+                                        style: GoogleFonts.inter(
+                                            fontSize: 15,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        "Keseluruhan",
+                                        style: GoogleFonts.inter(
+                                            fontSize: 15,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => pilih_kota()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color.fromARGB(255, 0, 173, 124),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Text(
+                                      "View",
+                                      style: GoogleFonts.inter(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )),
+                  SizedBox(
+                    height: 75,
+                  )
                 ],
               ),
             )),

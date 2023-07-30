@@ -1,0 +1,10 @@
+^C:\USERS\ASUS\VIDEOS\ACEH-SMART-MASTER\BUILD\WINDOWS\CMAKEFILES\06C2CFC2390D76E4090FF3C04AA79EC5\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

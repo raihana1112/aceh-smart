@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<List> _login() async {
     try {
       final response = await http
-          .post(Uri.parse("http://10.140.133.227/login_app/login.php"), body: {
+          .post(Uri.parse("http://192.168.100.198/login_app/login.php"), body: {
         "username": user.text,
         "password": pass.text,
       });
@@ -380,7 +380,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                home_page(id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat)));
+                home_page(id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, alamat:alamat, level:level)));
   }
 
   void pemerintah() {
@@ -388,7 +388,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) => home_page_pemerintah(
-                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, nip: nip, instansi:instansi)));
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, nip: nip, instansi:instansi, level:level)));
   }
 
   void penyuluh() {
@@ -396,6 +396,6 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
             builder: (context) => home_page_penyuluh(
-                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, instansi: instansi, id_penyuluh:id_penyuluh)));
+                id_user: id_user, username: username, telp: telp, nama_lengkap:nama_lengkap, instansi: instansi, id_penyuluh:id_penyuluh, level:level)));
   }
 }

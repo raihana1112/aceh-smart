@@ -46,26 +46,6 @@ class _ubah_profile_pemerintahState extends State<ubah_profile_pemerintah> {
   TextEditingController userr = TextEditingController();
   TextEditingController passs = TextEditingController();
 
-  // Future<List> tampil_data() async {
-  //   try {
-  //     final response = await http.get(
-  //         Uri.parse("http://192.168.137.48/login_app/tampil_profile.php"));
-  //     var datauser = json.decode(response.body);
-  //     setState(() {
-  //       id_user = int.parse(datauser[0]['id']);
-  //       // id_user = datauser[0]['id'];
-  //       nama = datauser[0]['nama_lengkap'];
-  //       inst = datauser[0]['instansi'];
-  //       nipp = datauser[0]['nip'];
-  //       telpp = datauser[0]['telp'];
-  //       username = datauser[0]['username'];
-  //     });
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   return [];
-  // }
-
   Future ubah() async {
     try {
       final response = await http.put(

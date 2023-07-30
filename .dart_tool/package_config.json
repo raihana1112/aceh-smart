@@ -248,6 +248,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-21.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-21.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -338,7 +350,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-07-25T05:57:24.017305Z",
+  "generated": "2023-07-29T14:25:52.087765Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }
